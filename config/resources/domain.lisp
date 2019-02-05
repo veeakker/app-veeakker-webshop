@@ -1,67 +1,49 @@
 (in-package :mu-cl-resources)
 
-;;;;
-;; NOTE
-;; docker-compose stop; docker-compose rm; docker-compose up
-;; after altering this file.
+(define-resource organization ()
+  :class (s-prefix "schema:Organization")
+  :has-many `((delivery-place :via ,(s-prefix "schema:hasPos")
+                              :as "delivery-places"))
+  :resource-base (s-url "http://veeakker.be/organizations/")
+  :on-path "organizations")
 
-;; Describe your resources here
+(define-resource delivery-place ()
+  :class (s-prefix "veeakker:DeliveryPlace")
+  :has-one `((delivery-kind :via ,(s-prefix "veeakker:hasDeliveryKind")
+                            :as "delivery-kind")
+             (geo-coordinate :via ,(s-prefix "schema:geo")
+                             :as "geo-coordinate")
+             (postal-address :via ,(s-prefix "schema:hasAddress")
+                             :as "postal-address"))
+  :resource-base (s-url "http://veeakker.be/delivery-places/")
+  :on-path "delivery-places")
 
-;; The general structure could be described like this:
-;;
-;; (define-resource <name-used-in-this-file> ()
-;;   :class <class-of-resource-in-triplestore>
-;;   :properties `((<json-property-name-one> <type-one> ,<triplestore-relation-one>)
-;;                 (<json-property-name-two> <type-two> ,<triplestore-relation-two>>))
-;;   :has-many `((<name-of-an-object> :via ,<triplestore-relation-to-objects>
-;;                                    :as "<json-relation-property>")
-;;               (<name-of-an-object> :via ,<triplestore-relation-from-objects>
-;;                                    :inverse t ; follow relation in other direction
-;;                                    :as "<json-relation-property>"))
-;;   :has-one `((<name-of-an-object :via ,<triplestore-relation-to-object>
-;;                                  :as "<json-relation-property>")
-;;              (<name-of-an-object :via ,<triplestore-relation-from-object>
-;;                                  :as "<json-relation-property>"))
-;;   :resource-base (s-url "<string-to-which-uuid-will-be-appended-for-uri-of-new-items-in-triplestore>")
-;;   :on-path "<url-path-on-which-this-resource-is-available>")
+(define-resource delivery-kind ()
+  :class (s-prefix "veeakker:DeliveryKind")
+  :properties `((:label :string ,(s-prefix "skos:prefLabel"))
+                (:description :string ,(s-prefix "dct:description")))
+  :has-many `((delivery-place :via ,(s-prefix "veeakker:hasDeliveryKind")
+                              :inverse t
+                              :as "delivery-places"))
+  :resource-base (s-url "http://veeakker.be/delivery-kinds/")
+  :features '(include-uri)
+  :on-path "delivery-kinds")
 
+(define-resource geo-coordinate ()
+  :class (s-prefix "schema:GeoCoordinate")
+  :properties `((:latitude :number ,(s-prefix "schema:latitude"))
+                (:longitude :number ,(s-prefix "schema:longitude")))
+  :has-one `((postal-address :via ,(s-prefix "schema:address")
+                             :as "postal-address"))
+  :resource-base (s-url "http://veeakker.be/geo-coordinates/")
+  :on-path "geo-coordinates")
 
-;; An example setup with a catalog, dataset, themes would be:
-;;
-;; (define-resource catalog ()
-;;   :class (s-prefix "dcat:Catalog")
-;;   :properties `((:title :string ,(s-prefix "dct:title")))
-;;   :has-many `((dataset :via ,(s-prefix "dcat:dataset")
-;;                        :as "datasets"))
-;;   :resource-base (s-url "http://webcat.tmp.semte.ch/catalogs/")
-;;   :on-path "catalogs")
+(define-resource postal-address ()
+  :class (s-prefix "schema:PostalAddress")
+  :properties `((:country :string ,(s-prefix "schema:addressCountry"))
+                (:locality :string ,(s-prefix "schema:addressLocality"))
+                (:postal-code :string ,(s-prefix "schema:postalCode"))
+                (:street-address :string ,(s-prefix "schema:streetAddress")))
+  :resource-base (s-url "http://veeakker.be/postal-addresses/")
+  :on-path "postal-addresses")
 
-;; (define-resource dataset ()
-;;   :class (s-prefix "dcat:Dataset")
-;;   :properties `((:title :string ,(s-prefix "dct:title"))
-;;                 (:description :string ,(s-prefix "dct:description")))
-;;   :has-one `((catalog :via ,(s-prefix "dcat:dataset")
-;;                       :inverse t
-;;                       :as "catalog"))
-;;   :has-many `((theme :via ,(s-prefix "dcat:theme")
-;;                      :as "themes"))
-;;   :resource-base (s-url "http://webcat.tmp.tenforce.com/datasets/")
-;;   :on-path "datasets")
-
-;; (define-resource distribution ()
-;;   :class (s-prefix "dcat:Distribution")
-;;   :properties `((:title :string ,(s-prefix "dct:title"))
-;;                 (:access-url :url ,(s-prefix "dcat:accessURL")))
-;;   :resource-base (s-url "http://webcat.tmp.tenforce.com/distributions/")
-;;   :on-path "distributions")
-
-;; (define-resource theme ()
-;;   :class (s-prefix "tfdcat:Theme")
-;;   :properties `((:pref-label :string ,(s-prefix "skos:prefLabel")))
-;;   :has-many `((dataset :via ,(s-prefix "dcat:theme")
-;;                        :inverse t
-;;                        :as "datasets"))
-;;   :resource-base (s-url "http://webcat.tmp.tenforce.com/themes/")
-;;   :on-path "themes")
-
-;;

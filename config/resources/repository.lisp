@@ -32,3 +32,6 @@
 ;; by them and that it shouldn't be used for permanent URIs.
 
 (add-prefix "ext" "http://mu.semte.ch/vocabularies/ext/")
+(add-prefix "schema" "http://schema.org/")
+(add-prefix "veeakker" "http://veeakker.be/vocabularies/shop/")
+(add-prefix "dct" "http://purl.org/dc/terms/")

@@ -1,0 +1,421 @@
+@prefix schema: <http://schema.org/>.
+@prefix veeakker: <http://veeakker.be/vocabularies/shop/>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+
+<http://veeakker.be/> a schema:Organization;
+  mu:uuid "f5ab0071-17ad-4053-bc90-73a2b549b133".  
+
+<http://veeakker.be/delivery-kinds/winkel> a veeakker:DeliveryKind;
+  mu:uuid "f2f3d81a-d09b-440c-a2e6-c0bc3ddd3f11";
+  skos:prefLabel "winkel".
+  
+<http://veeakker.be/delivery-kinds/toeren> a veeakker:DeliveryKind;
+  mu:uuid "1dd59b9b-cd81-4c3b-94fc-76f2d0f1a5c7";
+  skos:prefLabel "toeren".
+  
+<http://veeakker.be/delivery-kinds/natuurwinkels> a veeakker:DeliveryKind;
+  mu:uuid "3de71729-d372-46e3-9769-250b91ac455f";
+  skos:prefLabel "natuurwinkels".
+  
+<http://veeakker.be/delivery-kinds/buurderijen> a veeakker:DeliveryKind;
+  mu:uuid "6ddd7c19-8ea3-4b99-aa9d-83d623903a59";
+  skos:prefLabel "buurderijen".
+  
+<http://veeakker.be/delivery-kinds/webshop> a veeakker:DeliveryKind;
+  mu:uuid "906adaf4-e2df-495c-8213-6badf92ad56c";
+  skos:prefLabel "webshop".
+  
+
+<http://veeakker.be/delivery-places/60951243-73f4-44d8-be05-fd38ad6c22b0> a veeakker:DeliveryPlace;
+  mu:uuid "60951243-73f4-44d8-be05-fd38ad6c22b0";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/winkel>;
+  schema:geo <http://veeakker.be/geo-coordinates/3835094d-6cfd-4792-88fd-71ed40ddcd7a>;
+  schema:hasAddress <http://veeakker.be/addresses/535905bb-fd4c-40af-8f56-8db2debed23f>.
+
+<http://veeakker.be/geo-coordinates/3835094d-6cfd-4792-88fd-71ed40ddcd7a> a schema:GeoCoordinate;
+  mu:uuid "3835094d-6cfd-4792-88fd-71ed40ddcd7a";
+  schema:latitude "50.874007";
+  schema:longitude "4.689850";
+  schema:address <http://veeakker.be/addresses/535905bb-fd4c-40af-8f56-8db2debed23f>.
+
+<http://veeakker.be/addresses/535905bb-fd4c-40af-8f56-8db2debed23f> a schema:PostalAddress;
+  mu:uuid "535905bb-fd4c-40af-8f56-8db2debed23f";
+  schema:addressCountry "BE".
+
+
+
+<http://veeakker.be/delivery-places/60951243-73f4-44d8-be05-fd38ad6c22b0> a veeakker:DeliveryPlace;
+  mu:uuid "60951243-73f4-44d8-be05-fd38ad6c22b0";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/toeren>;
+  schema:geo <http://veeakker.be/geo-coordinates/3835094d-6cfd-4792-88fd-71ed40ddcd7a>;
+  schema:hasAddress <http://veeakker.be/addresses/535905bb-fd4c-40af-8f56-8db2debed23f>.
+
+<http://veeakker.be/geo-coordinates/3835094d-6cfd-4792-88fd-71ed40ddcd7a> a schema:GeoCoordinate;
+  mu:uuid "3835094d-6cfd-4792-88fd-71ed40ddcd7a";
+  schema:latitude "51.136411404727795";
+  schema:longitude "3.9085352240363145";
+  schema:address <http://veeakker.be/addresses/535905bb-fd4c-40af-8f56-8db2debed23f>.
+
+<http://veeakker.be/addresses/535905bb-fd4c-40af-8f56-8db2debed23f> a schema:PostalAddress;
+  mu:uuid "535905bb-fd4c-40af-8f56-8db2debed23f";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/07af5725-348f-4341-8d60-3ffb845fa34d> a veeakker:DeliveryPlace;
+  mu:uuid "07af5725-348f-4341-8d60-3ffb845fa34d";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/toeren>;
+  schema:geo <http://veeakker.be/geo-coordinates/b351a05b-d949-4f55-a008-139ae4dbc159>;
+  schema:hasAddress <http://veeakker.be/addresses/ccbe5b3e-0928-44f2-8a2c-df075a4b20c7>.
+
+<http://veeakker.be/geo-coordinates/b351a05b-d949-4f55-a008-139ae4dbc159> a schema:GeoCoordinate;
+  mu:uuid "b351a05b-d949-4f55-a008-139ae4dbc159";
+  schema:latitude "50.99806867674721";
+  schema:longitude "5.418216190882959";
+  schema:address <http://veeakker.be/addresses/ccbe5b3e-0928-44f2-8a2c-df075a4b20c7>.
+
+<http://veeakker.be/addresses/ccbe5b3e-0928-44f2-8a2c-df075a4b20c7> a schema:PostalAddress;
+  mu:uuid "ccbe5b3e-0928-44f2-8a2c-df075a4b20c7";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/94fac29e-4424-4ba1-91c9-136df55d9e0b> a veeakker:DeliveryPlace;
+  mu:uuid "94fac29e-4424-4ba1-91c9-136df55d9e0b";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/toeren>;
+  schema:geo <http://veeakker.be/geo-coordinates/ebf4c11c-b949-4028-84ef-f083cf96e527>;
+  schema:hasAddress <http://veeakker.be/addresses/3e69854c-ae81-4d77-9257-8305a7d4ed64>.
+
+<http://veeakker.be/geo-coordinates/ebf4c11c-b949-4028-84ef-f083cf96e527> a schema:GeoCoordinate;
+  mu:uuid "ebf4c11c-b949-4028-84ef-f083cf96e527";
+  schema:latitude "50.67996784834415";
+  schema:longitude "3.4902988543035467";
+  schema:address <http://veeakker.be/addresses/3e69854c-ae81-4d77-9257-8305a7d4ed64>.
+
+<http://veeakker.be/addresses/3e69854c-ae81-4d77-9257-8305a7d4ed64> a schema:PostalAddress;
+  mu:uuid "3e69854c-ae81-4d77-9257-8305a7d4ed64";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/3c7eb241-445e-44d2-9286-06b44ffa8140> a veeakker:DeliveryPlace;
+  mu:uuid "3c7eb241-445e-44d2-9286-06b44ffa8140";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/toeren>;
+  schema:geo <http://veeakker.be/geo-coordinates/6dfaddad-a366-4f81-8905-abc60f1460e7>;
+  schema:hasAddress <http://veeakker.be/addresses/3bf98eb7-7bba-4f7c-8218-267f8ab14523>.
+
+<http://veeakker.be/geo-coordinates/6dfaddad-a366-4f81-8905-abc60f1460e7> a schema:GeoCoordinate;
+  mu:uuid "6dfaddad-a366-4f81-8905-abc60f1460e7";
+  schema:latitude "51.2099348696034";
+  schema:longitude "3.4016129490919416";
+  schema:address <http://veeakker.be/addresses/3bf98eb7-7bba-4f7c-8218-267f8ab14523>.
+
+<http://veeakker.be/addresses/3bf98eb7-7bba-4f7c-8218-267f8ab14523> a schema:PostalAddress;
+  mu:uuid "3bf98eb7-7bba-4f7c-8218-267f8ab14523";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/551eed18-da95-484e-903f-4842414a22e2> a veeakker:DeliveryPlace;
+  mu:uuid "551eed18-da95-484e-903f-4842414a22e2";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/toeren>;
+  schema:geo <http://veeakker.be/geo-coordinates/00f61f17-702f-4795-a04c-1f44c3deefc5>;
+  schema:hasAddress <http://veeakker.be/addresses/8a1df596-6f94-44cd-b649-65140534badf>.
+
+<http://veeakker.be/geo-coordinates/00f61f17-702f-4795-a04c-1f44c3deefc5> a schema:GeoCoordinate;
+  mu:uuid "00f61f17-702f-4795-a04c-1f44c3deefc5";
+  schema:latitude "51.23338707554732";
+  schema:longitude "5.433456329628826";
+  schema:address <http://veeakker.be/addresses/8a1df596-6f94-44cd-b649-65140534badf>.
+
+<http://veeakker.be/addresses/8a1df596-6f94-44cd-b649-65140534badf> a schema:PostalAddress;
+  mu:uuid "8a1df596-6f94-44cd-b649-65140534badf";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/14ce6c9a-2491-402e-97f6-8a47e3e08d60> a veeakker:DeliveryPlace;
+  mu:uuid "14ce6c9a-2491-402e-97f6-8a47e3e08d60";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/toeren>;
+  schema:geo <http://veeakker.be/geo-coordinates/cc0ce2bf-ac88-43cc-9ed0-dc47a8cdb485>;
+  schema:hasAddress <http://veeakker.be/addresses/08383644-94a8-4bf5-a629-18e66e838e11>.
+
+<http://veeakker.be/geo-coordinates/cc0ce2bf-ac88-43cc-9ed0-dc47a8cdb485> a schema:GeoCoordinate;
+  mu:uuid "cc0ce2bf-ac88-43cc-9ed0-dc47a8cdb485";
+  schema:latitude "50.63323999115949";
+  schema:longitude "3.5408669966273014";
+  schema:address <http://veeakker.be/addresses/08383644-94a8-4bf5-a629-18e66e838e11>.
+
+<http://veeakker.be/addresses/08383644-94a8-4bf5-a629-18e66e838e11> a schema:PostalAddress;
+  mu:uuid "08383644-94a8-4bf5-a629-18e66e838e11";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/6f8ebdb5-b7d4-4768-9033-a6400443c0b7> a veeakker:DeliveryPlace;
+  mu:uuid "6f8ebdb5-b7d4-4768-9033-a6400443c0b7";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/toeren>;
+  schema:geo <http://veeakker.be/geo-coordinates/80def595-131b-48d9-833a-777ac815f173>;
+  schema:hasAddress <http://veeakker.be/addresses/f9a91f2c-e3e2-434a-9821-018c02af45ba>.
+
+<http://veeakker.be/geo-coordinates/80def595-131b-48d9-833a-777ac815f173> a schema:GeoCoordinate;
+  mu:uuid "80def595-131b-48d9-833a-777ac815f173";
+  schema:latitude "51.22996367122488";
+  schema:longitude "3.228557436377742";
+  schema:address <http://veeakker.be/addresses/f9a91f2c-e3e2-434a-9821-018c02af45ba>.
+
+<http://veeakker.be/addresses/f9a91f2c-e3e2-434a-9821-018c02af45ba> a schema:PostalAddress;
+  mu:uuid "f9a91f2c-e3e2-434a-9821-018c02af45ba";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/bf7a2823-8cfc-41b4-b4f5-bc3a7cdc532b> a veeakker:DeliveryPlace;
+  mu:uuid "bf7a2823-8cfc-41b4-b4f5-bc3a7cdc532b";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/toeren>;
+  schema:geo <http://veeakker.be/geo-coordinates/a9dbc94d-0da7-4ebc-a88b-eeb513159d7b>;
+  schema:hasAddress <http://veeakker.be/addresses/dabfe24d-f9f8-451f-a4d4-84fcca329952>.
+
+<http://veeakker.be/geo-coordinates/a9dbc94d-0da7-4ebc-a88b-eeb513159d7b> a schema:GeoCoordinate;
+  mu:uuid "a9dbc94d-0da7-4ebc-a88b-eeb513159d7b";
+  schema:latitude "50.92341670495495";
+  schema:longitude "3.5858080058824275";
+  schema:address <http://veeakker.be/addresses/dabfe24d-f9f8-451f-a4d4-84fcca329952>.
+
+<http://veeakker.be/addresses/dabfe24d-f9f8-451f-a4d4-84fcca329952> a schema:PostalAddress;
+  mu:uuid "dabfe24d-f9f8-451f-a4d4-84fcca329952";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/7658f0e6-9a1f-45e7-ac2a-291d94e3b177> a veeakker:DeliveryPlace;
+  mu:uuid "7658f0e6-9a1f-45e7-ac2a-291d94e3b177";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/toeren>;
+  schema:geo <http://veeakker.be/geo-coordinates/aaa2d605-0d6d-4a19-8e2b-8c31d11c5f29>;
+  schema:hasAddress <http://veeakker.be/addresses/fef1615d-c8b7-4cc3-bca4-1daed9263657>.
+
+<http://veeakker.be/geo-coordinates/aaa2d605-0d6d-4a19-8e2b-8c31d11c5f29> a schema:GeoCoordinate;
+  mu:uuid "aaa2d605-0d6d-4a19-8e2b-8c31d11c5f29";
+  schema:latitude "50.804484013578794";
+  schema:longitude "2.9745330743025993";
+  schema:address <http://veeakker.be/addresses/fef1615d-c8b7-4cc3-bca4-1daed9263657>.
+
+<http://veeakker.be/addresses/fef1615d-c8b7-4cc3-bca4-1daed9263657> a schema:PostalAddress;
+  mu:uuid "fef1615d-c8b7-4cc3-bca4-1daed9263657";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/97c9ee4f-92dd-452c-9475-c8249844248f> a veeakker:DeliveryPlace;
+  mu:uuid "97c9ee4f-92dd-452c-9475-c8249844248f";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/toeren>;
+  schema:geo <http://veeakker.be/geo-coordinates/686aa60e-a376-4796-bf2f-5eeac5c430e0>;
+  schema:hasAddress <http://veeakker.be/addresses/303f0ba1-434b-4368-bd8d-e8ba0b9c4072>.
+
+<http://veeakker.be/geo-coordinates/686aa60e-a376-4796-bf2f-5eeac5c430e0> a schema:GeoCoordinate;
+  mu:uuid "686aa60e-a376-4796-bf2f-5eeac5c430e0";
+  schema:latitude "50.703626413872286";
+  schema:longitude "4.892558429273778";
+  schema:address <http://veeakker.be/addresses/303f0ba1-434b-4368-bd8d-e8ba0b9c4072>.
+
+<http://veeakker.be/addresses/303f0ba1-434b-4368-bd8d-e8ba0b9c4072> a schema:PostalAddress;
+  mu:uuid "303f0ba1-434b-4368-bd8d-e8ba0b9c4072";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/60f710bd-5022-4bd1-be7c-46eebbf3dfb1> a veeakker:DeliveryPlace;
+  mu:uuid "60f710bd-5022-4bd1-be7c-46eebbf3dfb1";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/toeren>;
+  schema:geo <http://veeakker.be/geo-coordinates/052755cc-adac-47ce-baf4-0bfe665807cb>;
+  schema:hasAddress <http://veeakker.be/addresses/a90ba1fb-72db-4688-ba36-78fa67a2958d>.
+
+<http://veeakker.be/geo-coordinates/052755cc-adac-47ce-baf4-0bfe665807cb> a schema:GeoCoordinate;
+  mu:uuid "052755cc-adac-47ce-baf4-0bfe665807cb";
+  schema:latitude "50.630917014418415";
+  schema:longitude "4.583570695831441";
+  schema:address <http://veeakker.be/addresses/a90ba1fb-72db-4688-ba36-78fa67a2958d>.
+
+<http://veeakker.be/addresses/a90ba1fb-72db-4688-ba36-78fa67a2958d> a schema:PostalAddress;
+  mu:uuid "a90ba1fb-72db-4688-ba36-78fa67a2958d";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/93c60ad0-2b37-4111-90ee-411b483dd3fb> a veeakker:DeliveryPlace;
+  mu:uuid "93c60ad0-2b37-4111-90ee-411b483dd3fb";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/toeren>;
+  schema:geo <http://veeakker.be/geo-coordinates/f1b7f420-8e8d-4d1d-9060-a8fe6f9bcf36>;
+  schema:hasAddress <http://veeakker.be/addresses/16f41363-2a2d-4740-a3d7-778c103d814a>.
+
+<http://veeakker.be/geo-coordinates/f1b7f420-8e8d-4d1d-9060-a8fe6f9bcf36> a schema:GeoCoordinate;
+  mu:uuid "f1b7f420-8e8d-4d1d-9060-a8fe6f9bcf36";
+  schema:latitude "51.002003391647186";
+  schema:longitude "5.081507261493244";
+  schema:address <http://veeakker.be/addresses/16f41363-2a2d-4740-a3d7-778c103d814a>.
+
+<http://veeakker.be/addresses/16f41363-2a2d-4740-a3d7-778c103d814a> a schema:PostalAddress;
+  mu:uuid "16f41363-2a2d-4740-a3d7-778c103d814a";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/ca691c16-579f-44bd-a829-b9b94c6f9716> a veeakker:DeliveryPlace;
+  mu:uuid "ca691c16-579f-44bd-a829-b9b94c6f9716";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/toeren>;
+  schema:geo <http://veeakker.be/geo-coordinates/2e47f5f6-09bd-468e-bad4-8ec7cdee2996>;
+  schema:hasAddress <http://veeakker.be/addresses/33e6af96-34f0-44b0-a073-74da826f6ecb>.
+
+<http://veeakker.be/geo-coordinates/2e47f5f6-09bd-468e-bad4-8ec7cdee2996> a schema:GeoCoordinate;
+  mu:uuid "2e47f5f6-09bd-468e-bad4-8ec7cdee2996";
+  schema:latitude "50.75037623254823";
+  schema:longitude "4.414046641322785";
+  schema:address <http://veeakker.be/addresses/33e6af96-34f0-44b0-a073-74da826f6ecb>.
+
+<http://veeakker.be/addresses/33e6af96-34f0-44b0-a073-74da826f6ecb> a schema:PostalAddress;
+  mu:uuid "33e6af96-34f0-44b0-a073-74da826f6ecb";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/e561e4eb-94eb-4e32-a483-8bd199a53a67> a veeakker:DeliveryPlace;
+  mu:uuid "e561e4eb-94eb-4e32-a483-8bd199a53a67";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/toeren>;
+  schema:geo <http://veeakker.be/geo-coordinates/f6914666-7e7a-4481-9845-0e8211290781>;
+  schema:hasAddress <http://veeakker.be/addresses/314a0c70-994c-42fe-9e8a-f973c25b5226>.
+
+<http://veeakker.be/geo-coordinates/f6914666-7e7a-4481-9845-0e8211290781> a schema:GeoCoordinate;
+  mu:uuid "f6914666-7e7a-4481-9845-0e8211290781";
+  schema:latitude "50.80986002977849";
+  schema:longitude "4.62285005953163";
+  schema:address <http://veeakker.be/addresses/314a0c70-994c-42fe-9e8a-f973c25b5226>.
+
+<http://veeakker.be/addresses/314a0c70-994c-42fe-9e8a-f973c25b5226> a schema:PostalAddress;
+  mu:uuid "314a0c70-994c-42fe-9e8a-f973c25b5226";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/561c4d3c-a51d-40ec-9bbe-91b1a5431713> a veeakker:DeliveryPlace;
+  mu:uuid "561c4d3c-a51d-40ec-9bbe-91b1a5431713";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/natuurwinkels>;
+  schema:geo <http://veeakker.be/geo-coordinates/84ec9eb4-ba5f-4000-b2dc-4b69a5593b92>;
+  schema:hasAddress <http://veeakker.be/addresses/e97e2b38-392f-4670-b51f-ac240b152e8b>.
+
+<http://veeakker.be/geo-coordinates/84ec9eb4-ba5f-4000-b2dc-4b69a5593b92> a schema:GeoCoordinate;
+  mu:uuid "84ec9eb4-ba5f-4000-b2dc-4b69a5593b92";
+  schema:latitude "50.97787783069357";
+  schema:longitude "3.649813329102472";
+  schema:address <http://veeakker.be/addresses/e97e2b38-392f-4670-b51f-ac240b152e8b>.
+
+<http://veeakker.be/addresses/e97e2b38-392f-4670-b51f-ac240b152e8b> a schema:PostalAddress;
+  mu:uuid "e97e2b38-392f-4670-b51f-ac240b152e8b";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/0f59be1c-37ed-4933-8140-12ba5add9ee9> a veeakker:DeliveryPlace;
+  mu:uuid "0f59be1c-37ed-4933-8140-12ba5add9ee9";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/natuurwinkels>;
+  schema:geo <http://veeakker.be/geo-coordinates/52b62e9a-f8cd-4a08-aeb2-9a1ac9d1bd7b>;
+  schema:hasAddress <http://veeakker.be/addresses/3a8032e5-9c3a-4f23-a895-853790432c05>.
+
+<http://veeakker.be/geo-coordinates/52b62e9a-f8cd-4a08-aeb2-9a1ac9d1bd7b> a schema:GeoCoordinate;
+  mu:uuid "52b62e9a-f8cd-4a08-aeb2-9a1ac9d1bd7b";
+  schema:latitude "51.04250508761758";
+  schema:longitude "4.504399052239024";
+  schema:address <http://veeakker.be/addresses/3a8032e5-9c3a-4f23-a895-853790432c05>.
+
+<http://veeakker.be/addresses/3a8032e5-9c3a-4f23-a895-853790432c05> a schema:PostalAddress;
+  mu:uuid "3a8032e5-9c3a-4f23-a895-853790432c05";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/4a4038c6-2b8e-46f0-9503-949c7bf4c7e0> a veeakker:DeliveryPlace;
+  mu:uuid "4a4038c6-2b8e-46f0-9503-949c7bf4c7e0";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/natuurwinkels>;
+  schema:geo <http://veeakker.be/geo-coordinates/337e744c-91aa-46f0-971c-6643e8bd79f4>;
+  schema:hasAddress <http://veeakker.be/addresses/bbcb8b8c-2937-4dc1-a6af-376db6169de1>.
+
+<http://veeakker.be/geo-coordinates/337e744c-91aa-46f0-971c-6643e8bd79f4> a schema:GeoCoordinate;
+  mu:uuid "337e744c-91aa-46f0-971c-6643e8bd79f4";
+  schema:latitude "50.76584198531718";
+  schema:longitude "3.5628744587302212";
+  schema:address <http://veeakker.be/addresses/bbcb8b8c-2937-4dc1-a6af-376db6169de1>.
+
+<http://veeakker.be/addresses/bbcb8b8c-2937-4dc1-a6af-376db6169de1> a schema:PostalAddress;
+  mu:uuid "bbcb8b8c-2937-4dc1-a6af-376db6169de1";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/814729d5-882d-49f0-877b-86110692de50> a veeakker:DeliveryPlace;
+  mu:uuid "814729d5-882d-49f0-877b-86110692de50";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/buurderijen>;
+  schema:geo <http://veeakker.be/geo-coordinates/a1fe5533-80b5-44d3-b0b9-38ec98ad750f>;
+  schema:hasAddress <http://veeakker.be/addresses/e2bdc7e2-854e-411c-930e-0e08c3c566ff>.
+
+<http://veeakker.be/geo-coordinates/a1fe5533-80b5-44d3-b0b9-38ec98ad750f> a schema:GeoCoordinate;
+  mu:uuid "a1fe5533-80b5-44d3-b0b9-38ec98ad750f";
+  schema:latitude "50.7184726172852";
+  schema:longitude "3.8860656780889267";
+  schema:address <http://veeakker.be/addresses/e2bdc7e2-854e-411c-930e-0e08c3c566ff>.
+
+<http://veeakker.be/addresses/e2bdc7e2-854e-411c-930e-0e08c3c566ff> a schema:PostalAddress;
+  mu:uuid "e2bdc7e2-854e-411c-930e-0e08c3c566ff";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/895d5976-ff1e-4db5-97be-74b14c74709b> a veeakker:DeliveryPlace;
+  mu:uuid "895d5976-ff1e-4db5-97be-74b14c74709b";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/buurderijen>;
+  schema:geo <http://veeakker.be/geo-coordinates/99b1164f-a248-4fa5-8aad-8e474c1fb02a>;
+  schema:hasAddress <http://veeakker.be/addresses/eb06d4b7-a0c5-4a21-b0f8-28fc9f2ac81b>.
+
+<http://veeakker.be/geo-coordinates/99b1164f-a248-4fa5-8aad-8e474c1fb02a> a schema:GeoCoordinate;
+  mu:uuid "99b1164f-a248-4fa5-8aad-8e474c1fb02a";
+  schema:latitude "50.9964355261343";
+  schema:longitude "5.330312888254412";
+  schema:address <http://veeakker.be/addresses/eb06d4b7-a0c5-4a21-b0f8-28fc9f2ac81b>.
+
+<http://veeakker.be/addresses/eb06d4b7-a0c5-4a21-b0f8-28fc9f2ac81b> a schema:PostalAddress;
+  mu:uuid "eb06d4b7-a0c5-4a21-b0f8-28fc9f2ac81b";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/cf1c09cc-862c-48ea-8fb4-40054999b9c4> a veeakker:DeliveryPlace;
+  mu:uuid "cf1c09cc-862c-48ea-8fb4-40054999b9c4";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/buurderijen>;
+  schema:geo <http://veeakker.be/geo-coordinates/c223ff79-81c6-4dc8-a3f4-46cbe92292a6>;
+  schema:hasAddress <http://veeakker.be/addresses/2749684c-0a66-4091-95f5-84106a573a5d>.
+
+<http://veeakker.be/geo-coordinates/c223ff79-81c6-4dc8-a3f4-46cbe92292a6> a schema:GeoCoordinate;
+  mu:uuid "c223ff79-81c6-4dc8-a3f4-46cbe92292a6";
+  schema:latitude "50.75723731616244";
+  schema:longitude "4.691446502110922";
+  schema:address <http://veeakker.be/addresses/2749684c-0a66-4091-95f5-84106a573a5d>.
+
+<http://veeakker.be/addresses/2749684c-0a66-4091-95f5-84106a573a5d> a schema:PostalAddress;
+  mu:uuid "2749684c-0a66-4091-95f5-84106a573a5d";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/a0a72e4a-09d4-431f-b370-ed3f00e2ee38> a veeakker:DeliveryPlace;
+  mu:uuid "a0a72e4a-09d4-431f-b370-ed3f00e2ee38";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/buurderijen>;
+  schema:geo <http://veeakker.be/geo-coordinates/6a47c5ef-b110-4c05-925e-d4de95e8716b>;
+  schema:hasAddress <http://veeakker.be/addresses/44d89cbf-e873-4b73-84a5-726b35cf230a>.
+
+<http://veeakker.be/geo-coordinates/6a47c5ef-b110-4c05-925e-d4de95e8716b> a schema:GeoCoordinate;
+  mu:uuid "6a47c5ef-b110-4c05-925e-d4de95e8716b";
+  schema:latitude "50.684985500066354";
+  schema:longitude "3.95821818499826";
+  schema:address <http://veeakker.be/addresses/44d89cbf-e873-4b73-84a5-726b35cf230a>.
+
+<http://veeakker.be/addresses/44d89cbf-e873-4b73-84a5-726b35cf230a> a schema:PostalAddress;
+  mu:uuid "44d89cbf-e873-4b73-84a5-726b35cf230a";
+  schema:addressCountry "BE".
+
+
+<http://veeakker.be/delivery-places/215d747a-a726-4dd4-897b-a3d314ccad81> a veeakker:DeliveryPlace;
+  mu:uuid "215d747a-a726-4dd4-897b-a3d314ccad81";
+  veeakker:hasDeliveryKind <http://veeakker.be/delivery-kinds/buurderijen>;
+  schema:geo <http://veeakker.be/geo-coordinates/18bbd696-5958-4979-8095-36426c682c49>;
+  schema:hasAddress <http://veeakker.be/addresses/86c19d91-5617-43fa-9598-81885d33849f>.
+
+<http://veeakker.be/geo-coordinates/18bbd696-5958-4979-8095-36426c682c49> a schema:GeoCoordinate;
+  mu:uuid "18bbd696-5958-4979-8095-36426c682c49";
+  schema:latitude "50.756892128579715";
+  schema:longitude "5.327321166987532";
+  schema:address <http://veeakker.be/addresses/86c19d91-5617-43fa-9598-81885d33849f>.
+
+<http://veeakker.be/addresses/86c19d91-5617-43fa-9598-81885d33849f> a schema:PostalAddress;
+  mu:uuid "86c19d91-5617-43fa-9598-81885d33849f";
+  schema:addressCountry "BE".
+
+
