@@ -35,3 +35,4 @@
 (add-prefix "schema" "http://schema.org/")
 (add-prefix "veeakker" "http://veeakker.be/vocabularies/shop/")
 (add-prefix "dct" "http://purl.org/dc/terms/")
+(add-prefix "skos" "http://www.w3.org/2004/02/skos/core#")

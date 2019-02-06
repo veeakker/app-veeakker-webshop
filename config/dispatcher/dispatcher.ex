@@ -42,6 +42,18 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/postal-addresses/"
   end
 
+  match "/product-groups/*path" do
+    Proxy.forward conn, path, "http://resource/product-groups/"
+  end
+
+  match "/products/*path" do
+    Proxy.forward conn, path, "http://resource/products/"
+  end
+
+  match "/spotlight-products/*path" do
+    Proxy.forward conn, path, "http://resource/spotlight-products/"
+  end
+
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end
