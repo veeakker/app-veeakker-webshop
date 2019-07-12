@@ -54,8 +54,53 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/spotlight-products/"
   end
 
+  match "/payments/*path" do
+    Proxy.forward conn, path, "http://payments/payments/"
+  end
+
+  match "/paymentWebhook/*path" do
+    Proxy.forward conn, path, "http://payments/webhook/"
+  end
+
+  match "/counttriples/*path" do
+    Proxy.forward conn, path, "http://counttriplesservice/count/"
+  end
+
+  match "/offerings/*path" do
+    Proxy.forward conn, path, "http://resource/offerings/"
+  end
+
+  match "/unit-price-specifications/*path" do
+    Proxy.forward conn, path, "http://resource/unit-price-specifications/"
+  end
+
+  match "/quantitative-values/*path" do
+    Proxy.forward conn, path, "http://resource/quantitative-values/"
+  end
+
+  match "/type-and-quantities/*path" do
+    Proxy.forward conn, path, "http://resource/type-and-quantities/"
+  end
+
+  match "/baskets/*path" do
+    Proxy.forward conn, path, "http://resource/baskets/"
+  end
+
+  match "/order-lines/*path" do
+    Proxy.forward conn, path, "http://resource/order-lines/"
+  end
+
+  match "/files/*path" do
+    Proxy.forward conn, path, "http://file/files/"
+  end
+
+  match "/current-basket/*path" do
+    Proxy.forward conn, path, "http://basketservice/"
+  end
+
+
   match _ do
-    send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
+    send_resp( conn, 404, "Route not found.  See config/dispatcher.ex." )
   end
 
 end
