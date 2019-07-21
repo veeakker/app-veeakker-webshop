@@ -5,8 +5,6 @@ services:
     image: semtech/mu-identifier:1.5.0
     links:
       - dispatcher:dispatcher
-    ports:
-      - "80:80"
   dispatcher:
     image: semtech/mu-dispatcher:1.1.2
     links:
@@ -18,8 +16,6 @@ services:
     environment:
       SPARQL_UPDATE: "true"
       DEFAULT_GRAPH: "http://mu.semte.ch/application"
-    ports:
-      - "8890:8890"
     volumes:
       - ./data/db:/data
   resource:
@@ -34,3 +30,28 @@ services:
       - db:database
     volumes:
       - ./config/migrations:/data/migrations
+  payments:
+    image: madnificent/mu-mollie-service
+    links:
+      - db:database
+    environment:
+      MOLLIE_API_KEY: "your mollie api key"
+      MOLLIE_REDIRECT_URL: "http://frontend/paymentRedirect"
+      MOLLIE_BASE_WEBHOOK_URL: "http://backend/paymentWebhook"
+  file:
+    image: semtech/mu-file-service:3.1.0
+    links:
+      - db:database
+    volumes:
+      - ./data/files:/share
+  basketservice:
+    image: madnificent/basket-service
+    links:
+      - db:database
+  imageservice:
+    image: madnificent/mu-image-service
+    links:
+      - db:database
+    volumes:
+      - ./data/files:/share
+

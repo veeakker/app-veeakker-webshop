@@ -54,14 +54,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/spotlight-products/"
   end
 
-  match "/payments/*path" do
-    Proxy.forward conn, path, "http://payments/payments/"
-  end
-
-  match "/paymentWebhook/*path" do
-    Proxy.forward conn, path, "http://payments/webhook/"
-  end
-
   match "/counttriples/*path" do
     Proxy.forward conn, path, "http://counttriplesservice/count/"
   end
@@ -96,6 +88,19 @@ defmodule Dispatcher do
 
   match "/current-basket/*path" do
     Proxy.forward conn, path, "http://basketservice/"
+  end
+
+
+  match "/payments/*path" do
+    Proxy.forward conn, path, "http://payments/payments/"
+  end
+
+  match "/paymentWebhook/*path" do
+    Proxy.forward conn, path, "http://payments/webhook/"
+  end
+
+  match "/images/*path" do
+    Proxy.forward conn, path, "http://imageservice/image/"
   end
 
 
