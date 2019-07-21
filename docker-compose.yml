@@ -1,6 +1,14 @@
 version: '3.4'
 
 services:
+  frontendfreddie:
+    image: madnificent/frontend-freddie
+    links:
+      - identifier:backend
+  frontendwebshop:
+    image: madnificent/frontend-veeakker-webshop
+    links:
+      - identifier:backend
   identifier:
     image: semtech/mu-identifier:1.5.0
     links:
