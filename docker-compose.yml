@@ -39,7 +39,7 @@ services:
     volumes:
       - ./config/migrations:/data/migrations
   payments:
-    image: madnificent/mu-mollie-service
+    image: madnificent/mu-mollie-payment-service
     links:
       - db:database
     environment:
