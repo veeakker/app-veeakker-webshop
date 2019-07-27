@@ -135,7 +135,9 @@
 
 (define-resource basket ()
   :class (s-prefix "veeakker:Basket")
-  :properties `((:payment-status :string ,(s-prefix "veeakker:basketPaymentStatus")))
+  :properties `((:payment-status :string ,(s-prefix "veeakker:basketPaymentStatus"))
+                (:order-status :url ,(s-prefix "veeakker:basketOrderStatus"))
+                (:status-changed-at :datetime ,(s-prefix "veeakker:statusChangedAt")))
   :has-many `((order-line :via ,(s-prefix "veeakker:orderLine")
                           :as "order-lines"))
   :resource-base (s-url "http://veeakker.be/baskets/")
