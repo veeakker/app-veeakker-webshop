@@ -57,7 +57,7 @@ services:
     links:
       - db:database
   imageservice:
-    image: madnificent/mu-image-service
+    image: madnificent/mu-image-service:0.0.1
     links:
       - db:database
     volumes:
