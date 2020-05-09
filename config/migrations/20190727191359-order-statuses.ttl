@@ -1,0 +1,14 @@
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
+@prefix veeakker: <http://veeakker.be/vocabularies/shop/>.
+@prefix dct: <http://purl.org/dc/terms/>.
+
+<http://veeakker.be/order-statuses/confirmed>
+  a veeakker:OrderStatus;
+  mu:uuid "616f5664-019e-4cdd-8286-0676a7791edc";
+  dct:title "confirmed".
+
+<http://veeakker.be/order-statuses/draft>
+  a veeakker:OrderStatus;
+  mu:uuid "d8168c16-a665-4829-bab8-cfeab64b5036";
+  dct:title "draft".
