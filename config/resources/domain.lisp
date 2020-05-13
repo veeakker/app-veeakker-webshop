@@ -83,7 +83,8 @@
   :class (s-prefix "schema:Product")
   :properties `((:label :string ,(s-prefix "dct:title"))
                 (:alt-label :string ,(s-prefix "skos:altLabel"))
-                (:sort-index :number ,(s-prefix "veeakker:sortIndex")))
+                (:sort-index :number ,(s-prefix "veeakker:sortIndex"))
+                (:description :string ,(s-prefix "dct:description")))
   :has-many `((product-group :via ,(s-prefix "veeakker:hasProduct")
                              :inverse t
                              :as "product-groups")
