@@ -84,6 +84,7 @@
   :properties `((:label :string ,(s-prefix "dct:title"))
                 (:alt-label :string ,(s-prefix "skos:altLabel"))
                 (:sort-index :number ,(s-prefix "veeakker:sortIndex"))
+                (:product-labels :uri-set ,(s-prefix "veeakker:hasLabel"))
                 (:description :string ,(s-prefix "dct:description")))
   :has-many `((product-group :via ,(s-prefix "veeakker:hasProduct")
                              :inverse t

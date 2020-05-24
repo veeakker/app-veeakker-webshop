@@ -22,3 +22,20 @@ Boot your microservices-enabled system using docker-compose.
     docker-compose up
 
 You can shut down using `docker-compose stop` and remove everything using `docker-compose rm`.
+
+
+## Dataset info
+
+Some of the information in the dataset is not explicited.
+
+### Icons
+
+Currently the following URIs exist as information icons to be attached:
+
+| Name       | URI                                                            |
+|------------|----------------------------------------------------------------|
+| Puntafish  | http://veeakekr.be/labels/48844b54-2080-4190-b115-e5b34e742ad7 |
+| Natuurpunt | http://veeakker.be/labels/1a3c72ae-8c6b-4c5c-b249-f2ef852ba827 |
+| Frozen     | http://veeakker.be/labels/3a134729-ba29-4612-885a-15bc6bd33b66 |
+
+These URIs may be hardcoded in frontends, extending the list means searching through the code.
