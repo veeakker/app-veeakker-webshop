@@ -164,7 +164,6 @@
   :resource-base (s-url "https://veeakker.be/spotlight-products/")
   :on-path "spotlight-products")
 
-
 (define-resource file ()
   :class (s-prefix "nfo:FileDataObject")
   :properties `((:filename :string ,(s-prefix "nfo:fileName"))
@@ -175,9 +174,10 @@
   :has-one `((file :via ,(s-prefix "nie:dataSource")
                    :inverse t
                    :as "download"))
-  :resource-base (s-url "http://data.example.com/files/")
+  :resource-base (s-url "http://veeakker.be/files/")
   :features `(include-uri)
   :on-path "files")
+
 
 ;; We would like to start using the following
 ;;
