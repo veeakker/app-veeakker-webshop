@@ -1,0 +1,19 @@
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
+@prefix veeakker: <http://veeakker.be/vocabularies/shop/>.
+@prefix dct: <http://purl.org/dc/terms/>.
+
+<http://veeakker.be/product-labels/d9fa5ad6-0d0e-4990-b8a7-ca3a60eb3a85>
+  a veeakker:ProductLabel;
+  mu:uuid "d9fa5ad6-0d0e-4990-b8a7-ca3a60eb3a85";
+  dct:title "Frozen".
+
+<http://veeakker.be/product-labels/fa0d5d40-762e-4f89-ac82-46c1a4ee00bf>
+  a veeakker:ProductLabel;
+  mu:uuid "fa0d5d40-762e-4f89-ac82-46c1a4ee00bf";
+  dct:title "Natuurpunt".
+
+<http://veeakker.be/product-labels/c9e43e38-3f7f-4116-9817-80bdede3f123>
+  a veeakker:ProductLabel;
+  mu:uuid "c9e43e38-3f7f-4116-9817-80bdede3f123";
+  dct:title "PintaFish".
