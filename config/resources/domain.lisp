@@ -85,6 +85,8 @@
                 (:alt-label :string ,(s-prefix "skos:altLabel"))
                 (:sort-index :number ,(s-prefix "veeakker:sortIndex"))
                 (:product-labels :uri-set ,(s-prefix "veeakker:hasLabel"))
+                (:allergens-text :string ,(s-prefix "veeakker:allergensAsText"))
+                (:nutricion-data-text :string ,(s-prefix "veeakker:nutricionDataAsText")) ; should be served by nutricion data in the future
                 (:description :string ,(s-prefix "dct:description"))
                 (:ingredients-text :string ,(s-prefix "food:ingredientListAsText"))
                 (:plu :number ,(s-prefix "adms:identifier")))
