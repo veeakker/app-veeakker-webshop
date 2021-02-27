@@ -33,7 +33,7 @@ services:
     volumes:
       - ./config/resources:/config
   migrations:
-    image: semtech/mu-migrations-service:0.5.0
+    image: semtech/mu-migrations-service:0.7.0
     links:
       - db:database
     volumes:
