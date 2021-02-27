@@ -86,7 +86,8 @@
                 (:sort-index :number ,(s-prefix "veeakker:sortIndex"))
                 (:product-labels :uri-set ,(s-prefix "veeakker:hasLabel"))
                 (:description :string ,(s-prefix "dct:description"))
-                (:ingredients-text :string ,(s-prefix "food:ingredientListAsText")))
+                (:ingredients-text :string ,(s-prefix "food:ingredientListAsText"))
+                (:plu :number ,(s-prefix "adms:identifier")))
   :has-many `((product-group :via ,(s-prefix "veeakker:hasProduct")
                              :inverse t
                              :as "product-groups")
