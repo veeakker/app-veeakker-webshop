@@ -89,7 +89,8 @@
                 (:nutricion-data-text :string ,(s-prefix "veeakker:nutricionDataAsText")) ; should be served by nutricion data in the future
                 (:description :string ,(s-prefix "dct:description"))
                 (:ingredients-text :string ,(s-prefix "food:ingredientListAsText"))
-                (:plu :number ,(s-prefix "adms:identifier")))
+                (:plu :number ,(s-prefix "adms:identifier"))
+                (:is-enabled :boolean ,(s-prefix "veeakker:isEnabled")))
   :has-many `((product-group :via ,(s-prefix "veeakker:hasProduct")
                              :inverse t
                              :as "product-groups")

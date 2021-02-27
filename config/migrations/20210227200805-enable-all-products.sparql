@@ -1,0 +1,18 @@
+PREFIX veeakker: <http://veeakker.be/vocabularies/shop/>
+PREFIX schema: <http://schema.org/>
+PREFIX typedLiterals: <http://mu.semte.ch/vocabularies/typed-literals/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/application> {
+    ?product veeakker:isEnabled ?bool.
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/application> {
+    ?product veeakker:isEnabled """true"""^^typedLiterals:boolean.
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/application> {
+    ?product a schema:Product.
+    OPTIONAL { ?product veeakker:isEnabled ?bool }
+  }
+}
