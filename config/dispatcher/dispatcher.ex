@@ -22,6 +22,23 @@ defmodule Dispatcher do
   #   Proxy.forward conn, path, "http://resource/themes/"
   # end
 
+  post "/accounts/*path" do
+    Proxy.forward conn, path, "http://authentication/accounts/" 
+  end
+
+  delete "/accounts/current/*path" do
+    Proxy.forward conn, path, "http://authentication/accounts/current/" 
+  end
+
+  patch "/accounts/current/changePassword/*path" do
+    Proxy.forward conn, path, "http://authentication/accounts/current/changePassword/" 
+  end
+
+  match "/sessions/*path" do
+    Proxy.forward conn, path, "http://authentication/sessions/" 
+  end
+
+
   match "/organizations/*path" do
     Proxy.forward conn, path, "http://resource/organizations/"
   end

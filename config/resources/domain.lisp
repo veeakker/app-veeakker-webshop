@@ -3,6 +3,8 @@
 (setf *verify-content-type-header* nil)
 (setf *verify-accept-header* nil)
 
+(read-domain-file "master-account-domain.lisp")
+
 (define-resource organization ()
   :class (s-prefix "schema:Organization")
   :has-many `((delivery-place :via ,(s-prefix "schema:hasPos")

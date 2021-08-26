@@ -42,3 +42,5 @@
 (add-prefix "dbpedia" "http://dbpedia.org/ontology/")
 (add-prefix "food" "http://data.lirmm.fr/ontologies/food#")
 (add-prefix "adms" "http://www.w3.org/ns/adms#")
+(add-prefix "foaf" "http://xmlns.com/foaf/0.1/")
+(add-prefix "account" "http://mu.semte.ch/vocabularies/account/")

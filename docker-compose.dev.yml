@@ -4,6 +4,14 @@ services:
   identifier:
     ports:
       - "80:80"
-  db:
+  virtuoso:
     ports:
       - "8890:8890"
+  authentication:    
+    ports:
+        - 8888:80
+        - 9229:9229
+    environment:
+      NODE_ENV: "development"
+    volumes:
+      - /Users/siebe/Documents/Work/RedPencil.io/veeakker/mu-node-authentication-service/:/app/
