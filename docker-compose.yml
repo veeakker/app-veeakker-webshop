@@ -13,13 +13,29 @@ services:
     image: semtech/mu-identifier:1.5.0
     links:
       - dispatcher:dispatcher
+    environment:
+      DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: "[{\"variables\":[],\"name\":\"public\"}]"
   dispatcher:
     image: semtech/mu-dispatcher:1.1.2
     links:
       - resource:resource
     volumes:
       - ./config/dispatcher:/config
-  virtuoso:
+  database:
+    image: semtech/mu-authorization:0.6.0-beta.5
+    environment:
+      LOG_OUTGOING_SPARQL_QUERIES: "true"
+      INSPECT_OUTGOING_SPARQL_QUERIES: "false"
+      LOG_INCOMING_SPARQL_QUERIES: "true"
+      INSPECT_INCOMING_SPARQL_QUERIES: "false"
+      LOG_ACCESS_RIGHTS: "true"
+      INSPECT_ACCESS_RIGHTS_PROCESSING: "true"
+      LOG_DELTA_MESSAGES: "true"
+      LOG_DELTA_CLIENT_COMMUNICATION: "true"
+      MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
+    volumes:
+      - ./config/authorization:/config
+  triplestore:
     image: tenforce/virtuoso:1.3.2-virtuoso7.2.2
     environment:
       SPARQL_UPDATE: "true"
@@ -29,19 +45,19 @@ services:
   resource:
     image: semtech/mu-cl-resources:1.20.0
     links:
-      - virtuoso:database
+      - database:database
     volumes:
       - ./config/resources:/config
   migrations:
     image: semtech/mu-migrations-service:0.7.0
     links:
-      - virtuoso:database
+      - triplestore:database
     volumes:
       - ./config/migrations:/data/migrations
   payments:
     image: madnificent/mu-mollie-payment-service
     links:
-      - virtuoso:database
+      - database:database
     environment:
       MOLLIE_API_KEY: "your mollie api key"
       MOLLIE_REDIRECT_URL: "http://frontend/paymentRedirect"
@@ -49,23 +65,23 @@ services:
   file:
     image: semtech/mu-file-service:3.1.0
     links:
-      - virtuoso:database
+      - database:database
     volumes:
       - ./data/files:/share
   basketservice:
     image: madnificent/basket-service
     links:
-      - virtuoso:database
+      - database:database
   imageservice:
     image: madnificent/mu-image-service:0.0.1
     links:
-      - virtuoso:database
+      - database:database
     volumes:
       - ./data/files:/share
   authentication: 
     image: aatauil/mu-node-authentication-service
     links:
-      - virtuoso:database
+      - database:database
     labels:
       - "logging=true"
     restart: always
