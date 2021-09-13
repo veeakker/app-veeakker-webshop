@@ -41,9 +41,9 @@ defmodule Acl.UserGroups.Config do
 
       %GroupSpec{
         name: "user",
-        useage: [:read],
+        useage: [:read, :write],
         access: %AccessByQuery{
-                  vars: ["session_group_id","session_role"],
+                  vars: [],
                   query: "PREFIX session: <http://mu.semte.ch/vocabularies/session/>
                     PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
                     SELECT ?id WHERE {
@@ -51,11 +51,11 @@ defmodule Acl.UserGroups.Config do
                     }
                 " },
         graphs: [ %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/account",
+                    graph: "http://mu.semte.ch/graphs/accounts",
                     constraint: %ResourceConstraint{
                       resource_types: [
                         "http://xmlns.com/foaf/0.1/OnlineAccount",
-                        "http://mu.semte.ch/vocabularies/session/Session"
+                        "http://mu.semte.ch/vocabularies/session/Session",
                       ]
                     } } ] },
       

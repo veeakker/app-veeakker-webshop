@@ -116,6 +116,36 @@
   :resource-base (s-url "http://veeakker.be/offerings/")
   :on-path "offerings")
 
+(define-resource file ()
+  :class (s-prefix "nfo:FileDataObject")
+  :properties `((:filename :string ,(s-prefix "nfo:fileName"))
+                (:format :string ,(s-prefix "dct:format"))
+                (:size :number ,(s-prefix "nfo:fileSize"))
+                (:extension :string ,(s-prefix "dbpedia:fileExtension"))
+                (:created :datetime ,(s-prefix "nfo:fileCreated")))
+  :has-one `((file :via ,(s-prefix "nie:dataSource")
+                   :inverse t
+                   :as "download"))
+  :resource-base (s-url "http://veeakker.be/files/")
+  :features `(include-uri)
+  :on-path "files")
+
+(define-resource favourite ()
+  :class (s-prefix "ext:Favourite")
+  :properties `((:created :datetime ,(s-prefix "nfo:fileCreated")))
+  :has-many `((product-group :via ,(s-prefix "veeakker:hasProduct")
+                             :inverse t
+                             :as "product-groups")
+              (offering :via ,(s-prefix "veeakker:offerings")
+                        :as "offerings"))
+  :has-one `((unit-price-specification :via ,(s-prefix "veeakker:singleUnitPrice")
+                                       :as "unit-price")
+             (quantitative-value :via ,(s-prefix "veeakker:targetUnit")
+                                 :as "target-unit")
+             (file :via ,(s-prefix "veeakker:thumbnail")
+                   :as "thumbnail"))
+  :resource-base (s-url "http://veeakker.be/favourites/")
+  :on-path "favourites")
 
 ;; General support
 (define-resource unit-price-specification ()

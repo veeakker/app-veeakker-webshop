@@ -16,3 +16,4 @@ DELETE {
     OPTIONAL { ?product veeakker:isEnabled ?bool }
   }
 }
+

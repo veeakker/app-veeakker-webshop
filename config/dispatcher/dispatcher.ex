@@ -34,10 +34,13 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://authentication/accounts/current/changePassword/" 
   end
 
+  get "/accounts/*path" do
+    Proxy.forward conn, path, "http://resource/accounts/" 
+  end
+
   match "/sessions/*path" do
     Proxy.forward conn, path, "http://authentication/sessions/" 
   end
-
 
   match "/organizations/*path" do
     Proxy.forward conn, path, "http://resource/organizations/"
