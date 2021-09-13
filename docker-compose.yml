@@ -82,6 +82,9 @@ services:
     image: aatauil/mu-node-authentication-service
     links:
       - database:database
+    environment:
+      SESSIONS_GRAPH: "http://mu.semte.ch/graphs/public"
+      ACCOUNTS_GRAPH: "http://mu.semte.ch/graphs/public"
     labels:
       - "logging=true"
     restart: always

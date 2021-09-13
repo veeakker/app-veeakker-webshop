@@ -34,30 +34,32 @@ defmodule Acl.UserGroups.Config do
                         "http://veeakker.be/vocabularies/shop/Basket",
                         "http://veeakker.be/vocabularies/shop/OrderLine",
                         "http://veeakker.be/vocabularies/shop/SpotlightProduct",
-                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject"
-                      ]
-                    } } ] },
-
-
-      %GroupSpec{
-        name: "user",
-        useage: [:read, :write],
-        access: %AccessByQuery{
-                  vars: [],
-                  query: "PREFIX session: <http://mu.semte.ch/vocabularies/session/>
-                    PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-                    SELECT ?id WHERE {
-                      <SESSION_ID> session:account/mu:uuid ?id.
-                    }
-                " },
-        graphs: [ %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/accounts",
-                    constraint: %ResourceConstraint{
-                      resource_types: [
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
                         "http://xmlns.com/foaf/0.1/OnlineAccount",
                         "http://mu.semte.ch/vocabularies/session/Session",
                       ]
                     } } ] },
+      # This will come in handy for storing the basket, if we store it
+      # through mu-cl-resources
+      #
+      # %GroupSpec{
+      #   name: "user",
+      #   useage: [:read, :write],
+      #   access: %AccessByQuery{
+      #             vars: ["id"],
+      #             query: "PREFIX session: <http://mu.semte.ch/vocabularies/session/>
+      #               PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+      #               SELECT ?id WHERE {
+      #                 <SESSION_ID> session:account/mu:uuid ?id.
+      #               }
+      #           " },
+      #   graphs: [ %GraphSpec{
+      #               graph: "http://mu.semte.ch/graphs/accounts",
+      #               constraint: %ResourceConstraint{
+      #                 resource_types: [
+      #                 ]
+      #               } } ] }
+      # ,
       
       # CLEANUP
       #
