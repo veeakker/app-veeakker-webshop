@@ -22,6 +22,10 @@ defmodule Dispatcher do
   #   Proxy.forward conn, path, "http://resource/themes/"
   # end
 
+  post "/people/*path" do
+    Proxy.forward conn, path, "http://resource/people/" 
+  end
+
   post "/accounts/*path" do
     Proxy.forward conn, path, "http://authentication/accounts/" 
   end

@@ -3,8 +3,6 @@
 (setf *verify-content-type-header* nil)
 (setf *verify-accept-header* nil)
 
-(read-domain-file "master-account-domain.lisp")
-
 (define-resource organization ()
   :class (s-prefix "schema:Organization")
   :has-many `((delivery-place :via ,(s-prefix "schema:hasPos")
@@ -214,6 +212,28 @@
   :resource-base (s-url "http://veeakker.be/files/")
   :features `(include-uri)
   :on-path "files")
+
+
+(define-resource person ()
+  :class (s-prefix "foaf:Person")
+  :properties `((:first-name :string ,(s-prefix "foaf:firstName"))
+                (:last-name :string ,(s-prefix "foaf:familyName")))
+  :has-one `((postal-address :via ,(s-prefix "schema:PostalAddress")
+                             :as "postal-address"))
+  :has-many `((account :via ,(s-prefix "foaf:account")
+                       :as "accounts"))
+  :resource-base (s-url "http://veeakker.be/people/")
+  :on-path "people")
+
+ (define-resource account ()
+  :class (s-prefix "foaf:OnlineAccount")
+  :properties `((:email :string ,(s-prefix "account:email")))
+  :has-one `((person :via ,(s-prefix "foaf:account")
+                     :inverse t
+                     :as "person"))
+
+  :resource-base (s-url "http://mu.semte.ch/vocabularies/accounts/")
+  :on-path "accounts")
 
 
 ;; We would like to start using the following

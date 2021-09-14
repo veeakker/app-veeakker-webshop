@@ -37,6 +37,7 @@ defmodule Acl.UserGroups.Config do
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
                         "http://xmlns.com/foaf/0.1/OnlineAccount",
                         "http://mu.semte.ch/vocabularies/session/Session",
+                        "http://xmlns.com/foaf/0.1/Person"
                       ]
                     } } ] },
       # This will come in handy for storing the basket, if we store it
