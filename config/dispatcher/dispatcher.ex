@@ -22,7 +22,7 @@ defmodule Dispatcher do
   #   Proxy.forward conn, path, "http://resource/themes/"
   # end
 
-  post "/people/*path" do
+  match "/people/*path" do
     Proxy.forward conn, path, "http://resource/people/" 
   end
 
