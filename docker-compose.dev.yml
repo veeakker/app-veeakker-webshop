@@ -1,6 +1,9 @@
 version: '3.4'
 
 services:
+  frontendfreddie:
+    ports:
+      - "4100:80"
   identifier:
     ports:
       - "80:80"

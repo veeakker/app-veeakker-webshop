@@ -42,6 +42,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/accounts/" 
   end
 
+  match "/favourites/*path" do
+    Proxy.forward conn, path, "http://resource/favourites/" 
+  end
+
   match "/sessions/*path" do
     Proxy.forward conn, path, "http://authentication/sessions/" 
   end

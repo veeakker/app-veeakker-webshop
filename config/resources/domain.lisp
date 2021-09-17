@@ -131,17 +131,12 @@
 (define-resource favourite ()
   :class (s-prefix "ext:Favourite")
   :properties `((:created :datetime ,(s-prefix "nfo:fileCreated")))
-  :has-many `((product-group :via ,(s-prefix "veeakker:hasProduct")
-                             :inverse t
-                             :as "product-groups")
-              (offering :via ,(s-prefix "veeakker:offerings")
-                        :as "offerings"))
-  :has-one `((unit-price-specification :via ,(s-prefix "veeakker:singleUnitPrice")
-                                       :as "unit-price")
-             (quantitative-value :via ,(s-prefix "veeakker:targetUnit")
-                                 :as "target-unit")
-             (file :via ,(s-prefix "veeakker:thumbnail")
-                   :as "thumbnail"))
+  :has-one `((product :via ,(s-prefix "schema:Product")
+                      :as "product")
+             (person :via ,(s-prefix "foaf:Person")
+                     :inverse t
+                     :as "person"))
+                                       
   :resource-base (s-url "http://veeakker.be/favourites/")
   :on-path "favourites")
 
@@ -221,7 +216,9 @@
   :has-one `((postal-address :via ,(s-prefix "schema:PostalAddress")
                              :as "postal-address"))
   :has-many `((account :via ,(s-prefix "foaf:account")
-                       :as "accounts"))
+                       :as "accounts")
+              (favourite :via ,(s-prefix "ext:Favourite")
+                         :as "favourites"))
   :resource-base (s-url "http://veeakker.be/people/")
   :on-path "people")
 
