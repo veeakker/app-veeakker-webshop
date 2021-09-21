@@ -39,7 +39,7 @@ services:
     image: tenforce/virtuoso:1.3.2-virtuoso7.2.2
     environment:
       SPARQL_UPDATE: "true"
-      DEFAULT_GRAPH: "http://mu.semte.ch/application"
+      DEFAULT_GRAPH: "http://mu.semte.ch/public"
     volumes:
       - ./data/db:/data
   resource:
@@ -88,3 +88,13 @@ services:
     labels:
       - "logging=true"
     restart: always
+  export-service:
+    image: semtech/mu-javascript-template
+    ports:
+      - 8181:80
+    environment:
+      NODE_ENV: "development"
+    links:
+      - triplestore:database
+    volumes:
+      - /Users/siebe/Documents/Work/RedPencil.io/veeakker/mu-js-veeakker-export-service/:/app/

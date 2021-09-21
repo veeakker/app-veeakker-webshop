@@ -172,6 +172,8 @@
                 (:status-changed-at :datetime ,(s-prefix "veeakker:statusChangedAt")))
   :has-many `((order-line :via ,(s-prefix "veeakker:orderLine")
                           :as "order-lines"))
+  :has-one `((delivery-place :via ,(s-prefix "veeakker:DeliveryPlace")
+                       :as "delivery-place"))
   :resource-base (s-url "http://veeakker.be/baskets/")
   :on-path "baskets")
 
