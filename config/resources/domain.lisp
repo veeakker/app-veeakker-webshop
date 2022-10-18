@@ -59,11 +59,11 @@
   :class (s-prefix "veeakker:ProductGroup")
   :properties `((:label :string ,(s-prefix "skos:prefLabel"))
                 (:sort-index :number ,(s-prefix "veeakker:sortIndex")))
-  :has-one `((product-group :via ,(s-prefix "skos:broader")
-                            :as "parent-group"))
   :has-many `((product-group :via ,(s-prefix "skos:broader")
                              :inverse t
                              :as "child-groups")
+              (product-group :via ,(s-prefix "skos:broader")
+                             :as "parent-groups")
               (product :via ,(s-prefix "veeakker:hasProduct")
                        :as "products")
               (spotlight-product :via ,(s-prefix "veeakker:hasSpotlight")
