@@ -1,3 +1,5 @@
+(in-package :mu-cl-resources)
+
 (define-resource account ()
   :class (s-prefix "foaf:OnlineAccount")
   :properties `((:email :string ,(s-prefix "account:email"))

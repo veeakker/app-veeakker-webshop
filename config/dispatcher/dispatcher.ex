@@ -35,7 +35,7 @@ defmodule Dispatcher do
   end
 
   get "/accounts/*path" do
-    Proxy.forward conn, path, "http://resource/accounts/" 
+    Proxy.forward conn, path, "http://cache/accounts/"
   end
 
   match "/sessions/*path" do
@@ -43,35 +43,35 @@ defmodule Dispatcher do
   end
 
   match "/organizations/*path" do
-    Proxy.forward conn, path, "http://resource/organizations/"
+    Proxy.forward conn, path, "http://cache/organizations/"
   end
 
   match "/delivery-places/*path" do
-    Proxy.forward conn, path, "http://resource/delivery-places/"
+    Proxy.forward conn, path, "http://cache/delivery-places/"
   end
 
   match "/delivery-kinds/*path" do
-    Proxy.forward conn, path, "http://resource/delivery-kinds/"
+    Proxy.forward conn, path, "http://cache/delivery-kinds/"
   end
 
   match "/geo-coordinates/*path" do
-    Proxy.forward conn, path, "http://resource/geo-coordinates/"
+    Proxy.forward conn, path, "http://cache/geo-coordinates/"
   end
 
   match "/postal-addresses/*path" do
-    Proxy.forward conn, path, "http://resource/postal-addresses/"
+    Proxy.forward conn, path, "http://cache/postal-addresses/"
   end
 
   match "/product-groups/*path" do
-    Proxy.forward conn, path, "http://resource/product-groups/"
+    Proxy.forward conn, path, "http://cache/product-groups/"
   end
 
   match "/products/*path" do
-    Proxy.forward conn, path, "http://resource/products/"
+    Proxy.forward conn, path, "http://cache/products/"
   end
 
   match "/spotlight-products/*path" do
-    Proxy.forward conn, path, "http://resource/spotlight-products/"
+    Proxy.forward conn, path, "http://cache/spotlight-products/"
   end
 
   match "/counttriples/*path" do
@@ -79,27 +79,27 @@ defmodule Dispatcher do
   end
 
   match "/offerings/*path" do
-    Proxy.forward conn, path, "http://resource/offerings/"
+    Proxy.forward conn, path, "http://cache/offerings/"
   end
 
   match "/unit-price-specifications/*path" do
-    Proxy.forward conn, path, "http://resource/unit-price-specifications/"
+    Proxy.forward conn, path, "http://cache/unit-price-specifications/"
   end
 
   match "/quantitative-values/*path" do
-    Proxy.forward conn, path, "http://resource/quantitative-values/"
+    Proxy.forward conn, path, "http://cache/quantitative-values/"
   end
 
   match "/type-and-quantities/*path" do
-    Proxy.forward conn, path, "http://resource/type-and-quantities/"
+    Proxy.forward conn, path, "http://cache/type-and-quantities/"
   end
 
   match "/baskets/*path" do
-    Proxy.forward conn, path, "http://resource/baskets/"
+    Proxy.forward conn, path, "http://cache/baskets/"
   end
 
   match "/order-lines/*path" do
-    Proxy.forward conn, path, "http://resource/order-lines/"
+    Proxy.forward conn, path, "http://cache/order-lines/"
   end
 
   match "/files/*path" do
