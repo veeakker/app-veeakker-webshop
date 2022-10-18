@@ -22,6 +22,10 @@ defmodule Dispatcher do
   #   Proxy.forward conn, path, "http://resource/themes/"
   # end
 
+  match "/people/*path" do
+    Proxy.forward conn, path, "http://resource/people/" 
+  end
+
   post "/accounts/*path" do
     Proxy.forward conn, path, "http://authentication/accounts/" 
   end
@@ -36,6 +40,10 @@ defmodule Dispatcher do
 
   get "/accounts/*path" do
     Proxy.forward conn, path, "http://cache/accounts/"
+  end
+
+  match "/favourites/*path" do
+    Proxy.forward conn, path, "http://resource/favourites/" 
   end
 
   match "/sessions/*path" do

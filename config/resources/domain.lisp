@@ -6,8 +6,6 @@
 (setf *supply-cache-headers-p* t)
 (setf sparql:*experimental-no-application-graph-for-sudo-select-queries* t)
 
-(read-domain-file "master-account-domain.lisp")
-
 (define-resource organization ()
   :class (s-prefix "schema:Organization")
   :has-many `((delivery-place :via ,(s-prefix "schema:hasPos")
@@ -137,17 +135,12 @@
 (define-resource favourite ()
   :class (s-prefix "ext:Favourite")
   :properties `((:created :datetime ,(s-prefix "nfo:fileCreated")))
-  :has-many `((product-group :via ,(s-prefix "veeakker:hasProduct")
-                             :inverse t
-                             :as "product-groups")
-              (offering :via ,(s-prefix "veeakker:offerings")
-                        :as "offerings"))
-  :has-one `((unit-price-specification :via ,(s-prefix "veeakker:singleUnitPrice")
-                                       :as "unit-price")
-             (quantitative-value :via ,(s-prefix "veeakker:targetUnit")
-                                 :as "target-unit")
-             (file :via ,(s-prefix "veeakker:thumbnail")
-                   :as "thumbnail"))
+  :has-one `((product :via ,(s-prefix "schema:Product")
+                      :as "product")
+             (person :via ,(s-prefix "foaf:Person")
+                     :inverse t
+                     :as "person"))
+                                       
   :resource-base (s-url "http://veeakker.be/favourites/")
   :on-path "favourites")
 
@@ -219,6 +212,29 @@
   :features `(include-uri)
   :on-path "files")
 
+
+(define-resource person ()
+  :class (s-prefix "foaf:Person")
+  :properties `((:first-name :string ,(s-prefix "foaf:firstName"))
+                (:last-name :string ,(s-prefix "foaf:familyName")))
+  :has-one `((postal-address :via ,(s-prefix "schema:PostalAddress")
+                             :as "postal-address"))
+  :has-many `((account :via ,(s-prefix "foaf:account")
+                       :as "accounts")
+              (favourite :via ,(s-prefix "ext:Favourite")
+                         :as "favourites"))
+  :resource-base (s-url "http://veeakker.be/people/")
+  :on-path "people")
+
+ (define-resource account ()
+  :class (s-prefix "foaf:OnlineAccount")
+  :properties `((:email :string ,(s-prefix "account:email")))
+  :has-one `((person :via ,(s-prefix "foaf:account")
+                     :inverse t
+                     :as "person"))
+
+  :resource-base (s-url "http://mu.semte.ch/vocabularies/accounts/")
+  :on-path "accounts")
 
 ;; We would like to start using the following
 ;;
