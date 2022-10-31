@@ -10,11 +10,11 @@ services:
   triplestore:
     ports:
       - "8900:8890"
-  authentication:    
-    ports:
-        - 8888:80
-        - 9229:9229
-    environment:
-      NODE_ENV: "development"
-    volumes:
-      - /Users/siebe/Documents/Work/RedPencil.io/veeakker/mu-node-authentication-service/:/app/
+  # authentication:
+  #   ports:
+  #       - 8888:80
+  #       - 9229:9229
+  #   environment:
+  #     NODE_ENV: "development"
+  #   volumes:
+  #     - /Users/siebe/Documents/Work/RedPencil.io/veeakker/mu-node-authentication-service/:/app/
