@@ -115,6 +115,18 @@ services:
       - ./data/files:/share
     labels:
       - "logging=true"
+
+yourMicroserviceName:
+      image: semtech/mu-javascript-template
+      ports:
+        - 8888:80
+      environment:
+        NODE_ENV: "development"
+      links:
+        - database:database
+      volumes: 
+        - ./src/yourMicroservice/:/app/
+#        - /absolute/path/to/your/sources/:/app/
   # authentication:
   #   image: aatauil/mu-node-authentication-service
   #   links:
@@ -125,3 +137,6 @@ services:
   #   labels:
   #     - "logging=true"
   #   restart: always
+
+
+  
