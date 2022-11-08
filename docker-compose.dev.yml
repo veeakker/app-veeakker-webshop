@@ -18,3 +18,14 @@ services:
   #     NODE_ENV: "development"
   #   volumes:
   #     - /Users/siebe/Documents/Work/RedPencil.io/veeakker/mu-node-authentication-service/:/app/
+  yourMicroserviceName:
+    image: semtech/mu-javascript-template
+    ports:
+      - 8888:80
+    environment:
+      NODE_ENV: "development"
+    links:
+      - database:database
+    volumes:
+      - ./src/yourMicroservice/:/app/
+#        - /absolute/path/to/your/sources/:/app/
