@@ -23,19 +23,19 @@ defmodule Dispatcher do
   # end
 
   match "/people/*path" do
-    Proxy.forward conn, path, "http://resource/people/" 
+    Proxy.forward conn, path, "http://resource/people/"
   end
 
   post "/accounts/*path" do
-    Proxy.forward conn, path, "http://authentication/accounts/" 
+    Proxy.forward conn, path, "http://authentication/accounts/"
   end
 
   delete "/accounts/current/*path" do
-    Proxy.forward conn, path, "http://authentication/accounts/current/" 
+    Proxy.forward conn, path, "http://authentication/accounts/current/"
   end
 
   patch "/accounts/current/changePassword/*path" do
-    Proxy.forward conn, path, "http://authentication/accounts/current/changePassword/" 
+    Proxy.forward conn, path, "http://authentication/accounts/current/changePassword/"
   end
 
   get "/accounts/*path" do
@@ -43,11 +43,11 @@ defmodule Dispatcher do
   end
 
   match "/favourites/*path" do
-    Proxy.forward conn, path, "http://resource/favourites/" 
+    Proxy.forward conn, path, "http://resource/favourites/"
   end
 
   match "/sessions/*path" do
-    Proxy.forward conn, path, "http://authentication/sessions/" 
+    Proxy.forward conn, path, "http://authentication/sessions/"
   end
 
   match "/organizations/*path" do
@@ -131,8 +131,12 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://imageservice/image/"
   end
 
+  match "/pokemons/*path" do
+    Proxy.forward conn, path, "http://resource/pokemons/"
+  end
 
   match _ do
+    IO.puts("I'm in 404 route")
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex." )
   end
 

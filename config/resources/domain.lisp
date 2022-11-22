@@ -35,6 +35,16 @@
   :features '(include-uri)
   :on-path "delivery-kinds")
 
+  (define-resource pokemon ()
+  :class (s-prefix "veeakker:Pokemon")
+  :properties `((:name :string ,(s-prefix "ext:name")))
+  :has-many `((delivery-place :via ,(s-prefix "veeakker:hasPokemon")
+                              :inverse t
+                              :as "delivery-places"))
+  :resource-base (s-url "http://veeakker.be/pokemons/")
+  :features '(include-uri)
+  :on-path "pokemons")
+
 (define-resource geo-coordinate ()
   :class (s-prefix "schema:GeoCoordinate")
   :properties `((:latitude :number ,(s-prefix "schema:latitude"))
