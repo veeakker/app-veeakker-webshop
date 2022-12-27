@@ -39,7 +39,8 @@ defmodule Acl.UserGroups.Config do
                         "http://mu.semte.ch/vocabularies/session/Session",
                         "http://xmlns.com/foaf/0.1/Person",
                         "http://mu.semte.ch/vocabularies/ext/Favourite"
-                      ]
+                      ],
+                      inverse_predicates: %AllPredicates{}
                     } } ] },
       # This will come in handy for storing the basket, if we store it
       # through mu-cl-resources
