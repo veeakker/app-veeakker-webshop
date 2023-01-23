@@ -38,7 +38,8 @@ defmodule Acl.UserGroups.Config do
                         "http://xmlns.com/foaf/0.1/OnlineAccount",
                         "http://mu.semte.ch/vocabularies/session/Session",
                         "http://xmlns.com/foaf/0.1/Person",
-                        "http://mu.semte.ch/vocabularies/ext/Favourite"
+                        "http://mu.semte.ch/vocabularies/ext/Favourite",
+                        "http://veeakker.be/vocabularies/shop/Address"
                       ],
                       inverse_predicates: %AllPredicates{}
                     } } ] },

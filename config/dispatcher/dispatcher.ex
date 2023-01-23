@@ -135,6 +135,9 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://imageservice/image/"
   end
 
+  match "/full-addresses/*path" do
+    Proxy.forward conn, path, "http://cache/full-addresses/"
+  end
 
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex." )
