@@ -160,7 +160,6 @@
   :resource-base (s-url "http://veeakker.be/quantitative-values/")
   :on-path "quantitative-values")
 
-
 (define-resource type-and-quantity ()
   :class (s-prefix "gr:TypeAndQuantityNode")
   :properties `((:value :number ,(s-prefix "gr:amountOfThisGood"))
@@ -174,7 +173,9 @@
   :class (s-prefix "veeakker:Basket")
   :properties `((:payment-status :string ,(s-prefix "veeakker:basketPaymentStatus"))
                 (:order-status :url ,(s-prefix "veeakker:basketOrderStatus"))
-                (:status-changed-at :datetime ,(s-prefix "veeakker:statusChangedAt")))
+                (:status-changed-at :datetime ,(s-prefix "veeakker:statusChangedAt"))
+                (:has-custom-delivery-place :boolean ,(s-prefix "veeakker:hasCustomDeliveryPlace"))
+                (:delivery-type :url ,(s-prefix "veeakker:deliveryType")))
   :has-many `((order-line :via ,(s-prefix "veeakker:orderLine")
                           :as "order-lines"))
   :has-one `((delivery-place :via ,(s-prefix "veeakker:deliveryAt")
