@@ -123,6 +123,9 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://basketservice/"
   end
 
+  match "/confirm-basket/*path" do
+    Proxy.forward conn, path, "http://basketservice/confirm/"
+  end
 
   match "/payments/*path" do
     Proxy.forward conn, path, "http://payments/payments/"
