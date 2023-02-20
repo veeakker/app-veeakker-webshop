@@ -1,0 +1,29 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX veeakker: <http://veeakker.be/vocabularies/shop/>
+PREFIX gr: <http://purl.org/goodrelations/v1#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX schema: <http://schema.org/>
+
+INSERT {
+  GRAPH ?g {
+    ?product ?rel ?targetUri.
+    ?targetUri
+      a ?type;
+      mu:uuid ?targetUuid.
+  }
+} WHERE {
+  GRAPH ?g {
+    VALUES (?rel ?type ?baseUrl) {
+      (veeakker:singleUnitPrice gr:UnitPriceSpecification "http://veeakker.be/price-specifications/")
+      (veeakker:targetUnit gr:QuantitativeValue "http://veeakker.be/quantitative-values/")
+    }
+    ?product a schema:Product.
+
+    OPTIONAL { ?product mu:iDoNotExist ?uuid }
+    BIND(IF(BOUND(?uuid), ?uuid, STRUUID()) as ?targetUuid)
+    BIND(IRI(CONCAT(?baseUrl, ?targetUuid)) AS ?targetUri)
+    FILTER NOT EXISTS {
+      ?product ?rel ?targetVar.
+    }
+  }
+}
