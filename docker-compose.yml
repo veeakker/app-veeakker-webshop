@@ -103,7 +103,7 @@ services:
     labels:
       - "logging=true"
   basketservice:
-    image: madnificent/basket-service
+    image: madnificent/basket
     links:
       - database:database
     labels:
@@ -126,13 +126,15 @@ services:
     labels:
       - "logging=true"
     restart: always
-  export:
-    image: semtech/mu-javascript-template:feature-windows-dev
-    environment:
-      NODE_ENV: development
-      #DEV_OS: windows
-    #ports:
-      #- 9229:9229
-      #- 8889:80
-    volumes:
-      - ./src/yourMicroservice:/app
+  # export:
+  #   image: semtech/mu-javascript-template:feature-windows-dev
+  #   environment:
+  #     NODE_ENV: development
+  #     #DEV_OS: windows
+  #   #ports:
+  #     #- 9229:9229
+  #     #- 8889:80
+  #   volumes:
+  #     - ./src/yourMicroservice:/app
+  export-orders:
+    image: madnificent/export-orders
