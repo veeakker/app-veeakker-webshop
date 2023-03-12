@@ -16,6 +16,8 @@
 
 (define-resource delivery-place ()
   :class (s-prefix "veeakker:DeliveryPlace")
+  :properties `((:is-enabled :boolean ,(s-prefix "veeakker:isEnabled"))
+                (:label  :string ,(s-prefix "dct:title")))
   :has-one `((delivery-kind :via ,(s-prefix "veeakker:hasDeliveryKind")
                             :as "delivery-kind")
              (geo-coordinate :via ,(s-prefix "schema:geo")
