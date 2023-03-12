@@ -2,11 +2,11 @@ version: '3.4'
 
 services:
   frontendfreddie:
-    image: madnificent/frontend-administration
+    image: madnificent/frontend-administration:0.2.0
     links:
       - identifier:backend
   frontendwebshop:
-    image: madnificent/frontend-shop
+    image: madnificent/frontend-shop:0.7.0
     links:
       - identifier:backend
   identifier:
@@ -103,7 +103,7 @@ services:
     labels:
       - "logging=true"
   basketservice:
-    image: madnificent/basket
+    image: madnificent/basket:0.2.0
     links:
       - database:database
     labels:
@@ -117,12 +117,9 @@ services:
     labels:
       - "logging=true"
   authentication:
-    image: madnificent/mu-node-authentication-service
+    image: madnificent/mu-node-authentication:0.1.0
     links:
       - database:database
-    environment:
-      SESSIONS_GRAPH: "http://mu.semte.ch/graphs/public"
-      ACCOUNTS_GRAPH: "http://mu.semte.ch/graphs/public"
     labels:
       - "logging=true"
     restart: always
@@ -136,5 +133,5 @@ services:
   #     #- 8889:80
   #   volumes:
   #     - ./src/yourMicroservice:/app
-  export-orders:
-    image: madnificent/export-orders
+  # export-orders:
+  #   image: madnificent/export-orders

@@ -97,7 +97,7 @@
                 (:description :string ,(s-prefix "dct:description"))
                 (:ingredients-text :string ,(s-prefix "food:ingredientListAsText"))
                 (:plu :number ,(s-prefix "adms:identifier"))
-                (:is-enabled :boolean ,(s-prefix "veeakker:isEnabled")))
+                (:is-enabled :boolean ,(s-prefix "veeakker:isPublic")))
   :has-many `((product-group :via ,(s-prefix "veeakker:hasProduct")
                              :inverse t
                              :as "product-groups")
@@ -235,13 +235,13 @@
   :features `(include-uri)
   :on-path "files")
 
-
 (define-resource person ()
   :class (s-prefix "foaf:Person")
   :properties `((:first-name :string ,(s-prefix "foaf:firstName"))
                 (:last-name :string ,(s-prefix "foaf:familyName"))
-                (:email :string ,(s-prefix "schema:email")))
-  :has-one `((postal-address :via ,(s-prefix "schema:PostalAddress")
+                (:email :string ,(s-prefix "schema:email"))
+                (:phone :string ,(s-prefix "foaf:phone")))
+  :has-one `((postal-address :via ,(s-prefix "schema:postalAddress")
                              :as "postal-address"))
   :has-many `((account :via ,(s-prefix "foaf:account")
                        :as "accounts")
