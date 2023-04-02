@@ -103,7 +103,7 @@ services:
     labels:
       - "logging=true"
   basketservice:
-    image: madnificent/basket:0.3.0
+    image: madnificent/basket:0.4.0
     links:
       - database:database
     labels:
