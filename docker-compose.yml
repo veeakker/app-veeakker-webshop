@@ -117,7 +117,7 @@ services:
     labels:
       - "logging=true"
   authentication:
-    image: madnificent/mu-node-authentication:0.1.0
+    image: madnificent/mu-node-authentication:0.1.1
     links:
       - database:database
     labels:
