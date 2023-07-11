@@ -7,6 +7,15 @@
 (setf sparql:*experimental-no-application-graph-for-sudo-select-queries* t)
 (setf *cache-model-properties-p* t)
 
+(define-resource banner ()
+  :class (s-prefix "ext:Banner")
+  :properties `((:title :string ,(s-prefix "dct:title"))
+                (:kind :url ,(s-prefix "ext:kind"))
+                (:is-enabled :boolean ,(s-prefix "veeakker:isEnabled"))
+                (:sort-index :number ,(s-prefix "veeakker:sortIndex")))
+  :resource-base (s-url "http://veeakker.be/banners/")
+  :on-path "banners")
+
 (define-resource organization ()
   :class (s-prefix "schema:Organization")
   :has-many `((delivery-place :via ,(s-prefix "schema:hasPos")

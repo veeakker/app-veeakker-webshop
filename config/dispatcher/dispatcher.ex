@@ -95,6 +95,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/offerings/"
   end
 
+  match "/banners/*path" do
+    Proxy.forward conn, path, "http://cache/banners/"
+  end
+
   match "/unit-price-specifications/*path" do
     Proxy.forward conn, path, "http://cache/unit-price-specifications/"
   end

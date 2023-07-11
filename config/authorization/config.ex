@@ -36,6 +36,7 @@ defmodule Acl.UserGroups.Config do
                         "http://veeakker.be/vocabularies/shop/SpotlightProduct",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
                         "http://xmlns.com/foaf/0.1/OnlineAccount",
+                        "http://mu.semte.ch/vocabularies/ext/Banner",
                         "http://mu.semte.ch/vocabularies/session/Session",
                         "http://xmlns.com/foaf/0.1/Person",
                         "http://mu.semte.ch/vocabularies/ext/Favourite",
