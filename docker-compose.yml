@@ -2,11 +2,11 @@ version: '3.4'
 
 services:
   frontendfreddie:
-    image: madnificent/frontend-administration:0.2.0
+    image: madnificent/frontend-administration:0.3.1
     links:
       - identifier:backend
   frontendwebshop:
-    image: madnificent/frontend-shop:0.8.0
+    image: madnificent/frontend-shop:0.9.1
     links:
       - identifier:backend
   identifier:
