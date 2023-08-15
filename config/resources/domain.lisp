@@ -213,7 +213,8 @@
 
 (define-resource order-line ()
   :class (s-prefix "veeakker:OrderLine")
-  :properties `((:amount :number ,(s-prefix "veeakker:amount")))
+  :properties `((:amount :number ,(s-prefix "veeakker:amount"))
+                (:comment :string ,(s-prefix "veeakker:customerComment")))
   :has-one `((offering :via ,(s-prefix "veeakker:hasOffering")
                        :as "offering"))
   :resource-base (s-url "http://mu.semte.ch/order-lines/")
