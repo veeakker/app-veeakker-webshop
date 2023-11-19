@@ -31,15 +31,17 @@ defmodule Acl.UserGroups.Config do
                         "http://purl.org/goodrelations/v1#UnitPriceSpecification",
                         "http://purl.org/goodrelations/v1#QuantitativeValue",
                         "http://purl.org/goodrelations/v1#TypeAndQuantityNode",
-                        "http://veeakker.be/vocabularies/shop/Basket",
-                        "http://veeakker.be/vocabularies/shop/OrderLine",
                         "http://veeakker.be/vocabularies/shop/SpotlightProduct",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
-                        "http://xmlns.com/foaf/0.1/OnlineAccount",
                         "http://mu.semte.ch/vocabularies/ext/Banner",
+
+                        # These can only be set through specific services
+                        "http://veeakker.be/vocabularies/shop/Basket",
+                        "http://veeakker.be/vocabularies/shop/OrderLine",
                         "http://mu.semte.ch/vocabularies/session/Session",
-                        "http://xmlns.com/foaf/0.1/Person",
                         "http://mu.semte.ch/vocabularies/ext/Favourite",
+                        "http://xmlns.com/foaf/0.1/Person",
+                        "http://xmlns.com/foaf/0.1/OnlineAccount",
                         "http://veeakker.be/vocabularies/shop/Address"
                       ],
                       inverse_predicates: %AllPredicates{}
