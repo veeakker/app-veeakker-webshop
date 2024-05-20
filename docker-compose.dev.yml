@@ -1,20 +1,14 @@
 version: '3.4'
 
 services:
-  frontendfreddie:
-    ports:
-      - "4100:80"
+  # frontendfreddie:
+  #   ports:
+  #     - "4100:80"
+  #   volumes:
+  #     - ./ember-proxy-service.sh:/ember-proxy-service.sh
   identifier:
     ports:
       - "80:80"
   triplestore:
     ports:
-      - "8900:8890"
-  # authentication:
-  #   ports:
-  #       - 8888:80
-  #       - 9229:9229
-  #   environment:
-  #     NODE_ENV: "development"
-  #   volumes:
-  #     - /Users/siebe/Documents/Work/RedPencil.io/veeakker/mu-node-authentication-service/:/app/
+      - "8890:8890"

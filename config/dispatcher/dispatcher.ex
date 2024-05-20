@@ -23,12 +23,17 @@ defmodule Dispatcher do
   #   Proxy.forward conn, path, "http://resource/themes/"
   # end
 
-  match "/export/orders/*path" do
-    Proxy.forward conn, path, "http://export-orders/"
-  end
+  # temporarily disabled
+  # match "/export/orders/*path" do
+  #   Proxy.forward conn, path, "http://export-orders/"
+  # end
 
   match "/people/*path" do
-    Proxy.forward conn, path, "http://resource/people/" 
+    Proxy.forward conn, path, "http://authentication/people/"
+  end
+
+  match "/postal-addresses/*path" do
+    Proxy.forward conn, path, "http://authentication/postal-addresses/"
   end
 
   post "/accounts/*path" do
@@ -71,10 +76,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/geo-coordinates/"
   end
 
-  match "/postal-addresses/*path" do
-    Proxy.forward conn, path, "http://cache/postal-addresses/"
-  end
-
   match "/product-groups/*path" do
     Proxy.forward conn, path, "http://cache/product-groups/"
   end
@@ -112,7 +113,7 @@ defmodule Dispatcher do
   end
 
   match "/baskets/*path" do
-    Proxy.forward conn, path, "http://cache/baskets/"
+    Proxy.forward conn, path, "http://resource/baskets/"
   end
 
   match "/order-lines/*path" do
@@ -131,13 +132,13 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://basketservice/confirm/"
   end
 
-  match "/payments/*path" do
-    Proxy.forward conn, path, "http://payments/payments/"
-  end
+  # match "/payments/*path" do
+  #   Proxy.forward conn, path, "http://payments/payments/"
+  # end
 
-  match "/paymentWebhook/*path" do
-    Proxy.forward conn, path, "http://payments/webhook/"
-  end
+  # match "/paymentWebhook/*path" do
+  #   Proxy.forward conn, path, "http://payments/webhook/"
+  # end
 
   match "/images/*path" do
     Proxy.forward conn, path, "http://imageservice/image/"
