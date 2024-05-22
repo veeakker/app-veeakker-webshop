@@ -25,22 +25,22 @@
   :nfo "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#"
   :schema "http://schema.org/"
   :service "http://services.semantic.works/"
-  :shop "http://veeakker.be/vocabularies/shop/"
+  :veeakker "http://veeakker.be/vocabularies/shop/"
   :skos "http://www.w3.org/2004/02/skos/core#")
 
 (define-graph public ("http://mu.semte.ch/graphs/public")
   ("schema:Organization" -> _ <- _)
-  ("shop:DeliveryPlace"  -> _ <- _)
-  ("shop:DeliveryKind" -> _ <- _)
+  ("veeakker:DeliveryPlace"  -> _ <- _)
+  ("veeakker:DeliveryKind" -> _ <- _)
   ("schema:GeoCoordinate" -> _ <- _)
   ("schema:PostalAddress" -> _ <- _)
-  ("shop:ProductGroup" -> _ <- _)
+  ("veeakker:ProductGroup" -> _ <- _)
   ("schema:Product" -> _ <- _)
   ("gr:Offering" -> _ <- _)
   ("gr:UnitPriceSpecification" -> _ <- _)
   ("gr:QuantitativeValue" -> _ <- _)
   ("gr:TypeAndQuantityNode" -> _ <- _)
-  ("shop:SpotlightProduct" -> _ <- _)
+  ("veeakker:SpotlightProduct" -> _ <- _)
   ("nfo:FileDataObject" -> _ <- _)
   ("ext:Banner" -> _ <- _))
 
@@ -61,6 +61,61 @@
          }"
   :parameters ())
 
+(define-graph session-graph ("http://mu.semte.ch/sessions/")
+  (_ -> "veeakker:graphBelongsToSession"))
+
+(supply-allowed-group "anonymous-session"
+  :query "PREFIX session: <http://mu.semte.ch/vocabularies/session/>
+          PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+          SELECT ?id
+          WHERE {
+            VALUES ?graph { <SESSION_ID> }
+            BIND ( strafter(str(?graph),\"/sessions/\") AS ?id )
+            FILTER ( ?id != \"\" )
+            FILTER NOT EXISTS {
+              <SESSION_ID> session:account/^foaf:account ?user.
+            }
+          } ORDER BY ?id LIMIT 1"
+  :parameters (list "id"))
+
+(define-graph logged-in-graph ("http://veeakker.be/people/")
+  (_ -> "veeakker:graphBelongsToUser"))
+
+(supply-allowed-group "logged-in"
+  :query "PREFIX session: <http://mu.semte.ch/vocabularies/session/>
+          PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+          PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+          PREFIX veeakker: <http://veeakker.be/vocabularies/shop/>
+          SELECT ?id
+          WHERE {
+            <SESSION_ID> session:account/^foaf:account ?person.
+            ?person mu:uuid ?id.
+            FILTER NOT EXISTS {
+              ?person veeakker:role veeakker:Administrator.
+            }
+          } ORDER BY ?id LIMIT 1"
+  :parameters (list "id"))
+
+(supply-allowed-group "admin"
+  :query "PREFIX session: <http://mu.semte.ch/vocabularies/session/>
+          PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+          PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+          PREFIX veeakker: <http://veeakker.be/vocabularies/shop/>
+          SELECT ?id
+          WHERE {
+            <SESSION_ID> session:account/^foaf:account ?person.
+            ?person mu:uuid ?id.
+            ?person veeakker:role veeakker:Administrator.
+          } ORDER BY ?id LIMIT 1")
+
+(grant (read write)
+       :to logged-in-graph
+       :for "logged-in")
+
+(grant (road write)
+       :to session-graph
+       :for "anonymous-session")
+
 (grant (read)
        :to-graph public
        :for-allowed-group "public")
@@ -68,7 +123,7 @@
        :to public
        :for "admin")
 
-(with-scope "http://services.semantic.works/image-service"
+(with-scope "service:image-service"
   (grant (read write)
          :to files
          :for "public"))
