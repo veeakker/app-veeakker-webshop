@@ -1,32 +1,22 @@
 defmodule Dispatcher do
   use Matcher
-  define_accept_types []
 
-  # def start(_argv) do
-  #   port = 80
-  #   IO.puts "Starting Plug with Cowboy on port #{port}"
-  #   Plug.Adapters.Cowboy.http __MODULE__, [], port: port
-  #   :timer.sleep(:infinity)
-  # end
+  define_accept_types [
+    json: [ "application/json", "application/vnd.api+json" ]
+  ]
 
-  # plug Plug.Logger
-  # plug :match
-  # plug :dispatch
-
-  # In order to forward the 'themes' resource to the
-  # resource service, use the following forward rule.
-  #
-  # docker-compose stop; docker-compose rm; docker-compose up
-  # after altering this file.
-  #
-  # match "/themes/*path" do
-  #   Proxy.forward conn, path, "http://resource/themes/"
-  # end
+  @json %{ accept: %{ json: true } }
 
   # temporarily disabled
   # match "/export/orders/*path" do
   #   Proxy.forward conn, path, "http://export-orders/"
   # end
+
+  get "/search/:type/*path", @json do
+    new_path = "http://search/#{type}/search/"
+    IO.puts "Posting to #{new_path}"
+    Proxy.forward conn, path, new_path
+  end
 
   match "/people/*path" do
     Proxy.forward conn, path, "http://authentication/people/"
@@ -34,6 +24,10 @@ defmodule Dispatcher do
 
   match "/postal-addresses/*path" do
     Proxy.forward conn, path, "http://authentication/postal-addresses/"
+  end
+
+  patch "/accounts/*path" do
+    Proxy.forward conn, path, "http://cache/accounts/"
   end
 
   post "/accounts/*path" do

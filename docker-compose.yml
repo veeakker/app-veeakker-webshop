@@ -11,8 +11,6 @@ services:
     image: semtech/mu-identifier:1.10.1
     links:
       - dispatcher:dispatcher
-    environment:
-      DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: "[{\"variables\":[],\"name\":\"public\"}]"
     labels:
       - "logging=true"
   dispatcher:
@@ -22,7 +20,7 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/sparql-parser:feature-expand-prefixes-in-scope
+    image: semtech/sparql-parser:latest
     volumes:
       - ./config/cl-authorization:/config
     labels:
@@ -84,7 +82,7 @@ services:
     labels:
       - "logging=true"
   basketservice:
-    image: madnificent/basket:0.5.0
+    image: madnificent/basket:0.6.0
     labels:
       - "logging=true"
   imageservice:
@@ -96,7 +94,7 @@ services:
     labels:
       - "logging=true"
   authentication:
-    image: madnificent/mu-node-authentication:0.1.1
+    image: madnificent/mu-node-authentication:0.2.0
     labels:
       - "logging=true"
     restart: always
@@ -107,4 +105,13 @@ services:
     restart: "no"
     labels:
       - "logging=true"
-
+  search:
+    image: semtech/mu-search:feature-lazy-eager-indexes
+    volumes:
+      - ./config/search:/config
+  elasticsearch:
+    image: semtech/mu-search-elastic-backend:1.0.0
+    volumes:
+      - ./data/elasticsearch/:/usr/share/elasticsearch/data
+    environment:
+      - discovery.type=single-node

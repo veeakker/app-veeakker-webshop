@@ -26,7 +26,8 @@
   :schema "http://schema.org/"
   :service "http://services.semantic.works/"
   :veeakker "http://veeakker.be/vocabularies/shop/"
-  :skos "http://www.w3.org/2004/02/skos/core#")
+  :skos "http://www.w3.org/2004/02/skos/core#"
+  :foaf "http://xmlns.com/foaf/0.1/")
 
 (define-graph public ("http://mu.semte.ch/graphs/public")
   ("schema:Organization" -> _ <- _)
@@ -79,7 +80,10 @@
   :parameters (list "id"))
 
 (define-graph logged-in-graph ("http://veeakker.be/people/")
-  (_ -> "veeakker:graphBelongsToUser"))
+   (_ -> "veeakker:graphBelongsToUser")
+   ("foaf:OnlineAccount" -> _)
+   ("foaf:Person" -> _)
+   ("foaf:PostalAddress" -> _))
 
 (supply-allowed-group "logged-in"
   :query "PREFIX session: <http://mu.semte.ch/vocabularies/session/>
@@ -112,7 +116,7 @@
        :to logged-in-graph
        :for "logged-in")
 
-(grant (road write)
+(grant (read write)
        :to session-graph
        :for "anonymous-session")
 

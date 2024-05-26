@@ -1,0 +1,86 @@
+{
+  "persist_indexes": true,
+  "automatic_index_updates": true,
+  "eager_indexing_groups": [
+    [ { "name": "public", "variables": [] } ],
+    [ { "name": "admin", "variables": [] } ],
+    [ { "name": "anonymous-session", "variables": ["*"] } ],
+    [ { "name": "logged-in", "variables": ["*"] } ]
+  ],
+  "default_settings": {
+    "analysis": {
+      "analyzer": {
+        "dutchanalyzer": {
+          "tokenizer": "standard",
+          "filter": ["lowercase", "asciifolding", "dutchstemmer"]
+        }
+      },
+      "filter": {
+        "dutchstemmer": {
+          "type": "stemmer",
+          "name": "dutch"
+        }
+      }
+    }
+  },
+  "types": [
+    {
+      "type": "product",
+      "on_path": "products",
+      "rdf_type": "http://schema.org/Product",
+      "properties": {
+        "label": "http://purl.org/dc/terms/title",
+        "alt-label": "http://www.w3.org/2004/02/skos/core#altLabel",
+        "sort-index": "http://veeakker.be/vocabularies/shop/sortIndex",
+        "product-labels": "http://veeakker.be/vocabularies/shop/hasLabel",
+        "allergens-text": "http://veeakker.be/vocabularies/shop/allergensAsText",
+        "nutricion-data-text": "http://veeakker.be/vocabularies/shop/nutricionDataAsText",
+        "description": "http://purl.org/dc/terms/description",
+        "ingredients-text": "http://data.lirmm.fr/ontologies/food#ingredientListAsText",
+        "plu": "http://www.w3.org/ns/adms#identifier",
+        "is-enabled": "http://veeakker.be/vocabularies/shop/isPublic",
+        "product-group-ids": [
+          "^http://veeakker.be/vocabularies/shop/hasProduct",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "offerings": {
+          "via": "http://veeakker.be/vocabularies/shop/offerings",
+          "rdf_type": "http://purl.org/goodrelations/v1#Offering",
+          "properties": {
+            "type-and-quantity": {
+              "via": "http://purl.org/goodrelations/v1#includesObject",
+              "rdf_type": "http://purl.org/goodrelations/v1#TypeAndQuantityNode",
+              "properties": {
+                "value": "http://purl.org/goodrelations/v1#amountOfThisGood",
+                "unit": "http://purl.org/goodrelations/v1#hasUnitOfMeasurement"
+              }
+            },
+            "unit-price": {
+              "via": "http://purl.org/goodrelations/v1#hasPriceSpecification",
+              "rdf_type": "http://purl.org/goodrelations/v1#",
+              "properties": {
+                "unit": "http://purl.org/goodrelations/v1#hasUnitOfMeasurement",
+                "value": "http://purl.org/goodrelations/v1#hasCurrencyValue"
+              }
+            }
+          }
+        },
+        "thumbnail": {
+          "via": "http://veeakker.be/vocabularies/shop/thumbnail",
+          "rdf_type": "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
+          "properties": {
+            "filename": "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName"
+          }
+        }
+      },
+      "mappings": {
+        "properties": {
+          "label": { "type": "text" },
+          "description": { "type": "text" },
+          "product-group-ids": { "type": "keyword" },
+          "isEnabled": { "type": "boolean" }
+        }
+      }
+    }
+  ]
+}
