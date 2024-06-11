@@ -20,7 +20,7 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/sparql-parser:latest
+    image: semtech/sparql-parser:0.0.5
     volumes:
       - ./config/cl-authorization:/config
     labels:
