@@ -1,0 +1,7 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX account: <http://mu.semte.ch/vocabularies/account/>
+
+SELECT ?person WHERE {
+  ?account account:email "REPLACE".
+  ?person foaf:account ?account.
+}

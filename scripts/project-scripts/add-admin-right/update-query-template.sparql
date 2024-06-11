@@ -1,0 +1,9 @@
+PREFIX session: <http://mu.semte.ch/vocabularies/session/>
+PREFIX veeakker: <http://veeakker.be/vocabularies/shop/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT DATA {
+  GRAPH <http://veeakker.be/graphs/administrators> {
+    <REPLACE> veeakker:role veeakker:Administrator.
+  }
+}

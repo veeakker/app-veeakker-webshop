@@ -1,0 +1,37 @@
+{
+  "version": "0.1",
+  "scripts": [
+    {
+      "documentation": {
+        "command": "add-admin-right",
+        "description": "Adds administrator right to user.",
+        "arguments": ["person-uri"]
+      },
+      "environment": {
+        "image": "curlimages/curl:7.76.1",
+        "interactive": false,
+        "script": "add-admin-right/execute.sh",
+        "join_networks": true
+      },
+      "mounts": {
+        "app": "/data/app/"
+      }
+    },
+    {
+      "documentation": {
+        "command": "person-uri-for-email",
+        "description": "Finds the person URI for a given email address.",
+        "arguments": ["email-address"]
+      },
+      "environment": {
+        "image": "curlimages/curl:7.76.1",
+        "interactive": true,
+        "script": "query-person-by-email/execute.sh",
+        "join_networks": true
+      },
+      "mounts": {
+        "app": "/data/app/"
+      }
+    }
+  ]
+}
