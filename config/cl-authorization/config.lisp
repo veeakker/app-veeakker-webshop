@@ -83,7 +83,7 @@
    (_ -> "veeakker:graphBelongsToUser")
    ("foaf:OnlineAccount" -> _)
    ("foaf:Person" -> _)
-   ("foaf:PostalAddress" -> _))
+   ("schema:PostalAddress" -> _))
 
 (supply-allowed-group "logged-in"
   :query "PREFIX session: <http://mu.semte.ch/vocabularies/session/>

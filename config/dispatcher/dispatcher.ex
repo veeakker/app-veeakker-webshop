@@ -22,8 +22,11 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://authentication/people/"
   end
 
+  # match "/postal-addresses/*path" do
+  #   Proxy.forward conn, path, "http://authentication/postal-addresses/"
+  # end
   match "/postal-addresses/*path" do
-    Proxy.forward conn, path, "http://authentication/postal-addresses/"
+    Proxy.forward conn, path, "http://cache/postal-addresses/"
   end
 
   patch "/accounts/*path" do
