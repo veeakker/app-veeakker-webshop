@@ -4,7 +4,7 @@ services:
     links:
       - identifier:backend
   frontendwebshop:
-    image: madnificent/frontend-shop:0.11.0
+    image: madnificent/frontend-shop:0.11.1
     links:
       - identifier:backend
   identifier:

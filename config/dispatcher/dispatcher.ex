@@ -137,7 +137,7 @@ defmodule Dispatcher do
   #   Proxy.forward conn, path, "http://payments/webhook/"
   # end
 
-  match "/images/*path" do
+  match "/imgs/*path" do
     Proxy.forward conn, path, "http://imageservice/image/"
   end
 
