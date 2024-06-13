@@ -2,30 +2,52 @@ defmodule Dispatcher do
   use Matcher
 
   define_accept_types [
-    json: [ "application/json", "application/vnd.api+json" ]
+    json: [ "application/json", "application/vnd.api+json" ],
+    html: [ "text/html", "application/xhtml+html" ],
+    image: ["image/*"],
+    any: [ "*/*" ]
   ]
 
-  @json %{ accept: %{ json: true } }
+  define_layers [ :static, :api, :frontend_fallback, :not_found ]
 
-  # temporarily disabled
-  # match "/export/orders/*path" do
-  #   Proxy.forward conn, path, "http://export-orders/"
-  # end
+  @json_api %{ accept: [:json], layer: :api  }
+  @image %{ accept: [:image] }
 
-  get "/search/:type/*path", @json do
+  match "/.well-known/*_path", _ do
+    send_resp( conn, 200, "{ \"message\": \"ok\" }" )
+  end
+
+  match "/favicon.ico/*_path", _ do
+    send_resp( conn, 404, "No icon specified" )
+  end
+
+  match "/assets/*path", %{ layer: :static, reverse_host: ["admin" | _rest ] } do
+    Proxy.forward conn, path, "http://frontendfreddie/assets/"
+  end
+
+  match "/assets/*path", %{ layer: :static } do
+    Proxy.forward conn, path, "http://frontendwebshop/assets/"
+  end
+
+  match "/images/*path", %{ layer: :static, reverse_host: ["admin" | _rest ] } do
+    Proxy.forward conn, path, "http://frontendfreddie/images/"
+  end
+
+  match "/images/*path", %{ layer: :static } do
+    Proxy.forward conn, path, "http://frontendwebshop/images/"
+  end
+
+  get "/search/:type/*path", @json_api do
     new_path = "http://search/#{type}/search/"
     IO.puts "Posting to #{new_path}"
     Proxy.forward conn, path, new_path
   end
 
-  match "/people/*path" do
+  match "/people/*path", @json_api do
     Proxy.forward conn, path, "http://authentication/people/"
   end
 
-  # match "/postal-addresses/*path" do
-  #   Proxy.forward conn, path, "http://authentication/postal-addresses/"
-  # end
-  match "/postal-addresses/*path" do
+  match "/postal-addresses/*path", @json_api do
     Proxy.forward conn, path, "http://cache/postal-addresses/"
   end
 
@@ -34,11 +56,11 @@ defmodule Dispatcher do
   end
 
   post "/accounts/*path" do
-    Proxy.forward conn, path, "http://authentication/accounts/" 
+    Proxy.forward conn, path, "http://authentication/accounts/"
   end
 
   delete "/accounts/current/*path" do
-    Proxy.forward conn, path, "http://authentication/accounts/current/" 
+    Proxy.forward conn, path, "http://authentication/accounts/current/"
   end
 
   patch "/accounts/current/changePassword/*path" do
@@ -49,103 +71,103 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/accounts/"
   end
 
-  match "/favourites/*path" do
-    Proxy.forward conn, path, "http://resource/favourites/" 
+  match "/favourites/*path", @json_api do
+    Proxy.forward conn, path, "http://resource/favourites/"
   end
 
-  match "/sessions/*path" do
-    Proxy.forward conn, path, "http://authentication/sessions/" 
+  match "/sessions/*path", @json_api do
+    Proxy.forward conn, path, "http://authentication/sessions/"
   end
 
-  match "/organizations/*path" do
+  match "/organizations/*path", @json_api do
     Proxy.forward conn, path, "http://cache/organizations/"
   end
 
-  match "/delivery-places/*path" do
+  match "/delivery-places/*path", @json_api do
     Proxy.forward conn, path, "http://cache/delivery-places/"
   end
 
-  match "/delivery-kinds/*path" do
+  match "/delivery-kinds/*path", @json_api do
     Proxy.forward conn, path, "http://cache/delivery-kinds/"
   end
 
-  match "/geo-coordinates/*path" do
+  match "/geo-coordinates/*path", @json_api do
     Proxy.forward conn, path, "http://cache/geo-coordinates/"
   end
 
-  match "/product-groups/*path" do
+  match "/product-groups/*path", @json_api do
     Proxy.forward conn, path, "http://cache/product-groups/"
   end
 
-  match "/products/*path" do
+  match "/products/*path", @json_api do
     Proxy.forward conn, path, "http://cache/products/"
   end
 
-  match "/spotlight-products/*path" do
+  match "/spotlight-products/*path", @json_api do
     Proxy.forward conn, path, "http://cache/spotlight-products/"
   end
 
-  match "/counttriples/*path" do
+  match "/counttriples/*path", @json_api do
     Proxy.forward conn, path, "http://counttriplesservice/count/"
   end
 
-  match "/offerings/*path" do
+  match "/offerings/*path", @json_api do
     Proxy.forward conn, path, "http://cache/offerings/"
   end
 
-  match "/banners/*path" do
+  match "/banners/*path", @json_api do
     Proxy.forward conn, path, "http://cache/banners/"
   end
 
-  match "/unit-price-specifications/*path" do
+  match "/unit-price-specifications/*path", @json_api do
     Proxy.forward conn, path, "http://cache/unit-price-specifications/"
   end
 
-  match "/quantitative-values/*path" do
+  match "/quantitative-values/*path", @json_api do
     Proxy.forward conn, path, "http://cache/quantitative-values/"
   end
 
-  match "/type-and-quantities/*path" do
+  match "/type-and-quantities/*path", @json_api do
     Proxy.forward conn, path, "http://cache/type-and-quantities/"
   end
 
-  match "/baskets/*path" do
+  match "/baskets/*path", @json_api do
     Proxy.forward conn, path, "http://resource/baskets/"
   end
 
-  match "/order-lines/*path" do
+  match "/order-lines/*path", @json_api do
     Proxy.forward conn, path, "http://cache/order-lines/"
   end
 
-  match "/files/*path" do
+  match "/files/*path", @json_api do
     Proxy.forward conn, path, "http://file/files/"
   end
 
-  match "/current-basket/*path" do
+  match "/current-basket/*path", @json_api do
     Proxy.forward conn, path, "http://basketservice/"
   end
 
-  match "/confirm-basket/*path" do
+  match "/confirm-basket/*path", @json_api do
     Proxy.forward conn, path, "http://basketservice/confirm/"
   end
 
-  # match "/payments/*path" do
-  #   Proxy.forward conn, path, "http://payments/payments/"
-  # end
-
-  # match "/paymentWebhook/*path" do
-  #   Proxy.forward conn, path, "http://payments/webhook/"
-  # end
-
-  match "/imgs/*path" do
+  match "/imgs/*path", %{ layer: :static, accept: [:image] } do
     Proxy.forward conn, path, "http://imageservice/image/"
   end
 
-  match "/full-addresses/*path" do
+  match "/full-addresses/*path", @json_api do
     Proxy.forward conn, path, "http://cache/full-addresses/"
   end
 
-  match "/*_", %{ last_call: true } do
+  match "/*_", %{ accept: [:html], layer: :api, reverse_host: ["admin" | _rest ] } do
+    Proxy.forward conn, [], "http://frontendfreddie/index.html"
+  end
+
+  match "/*_", %{ accept: [:html], layer: :api } do
+    Proxy.forward conn, [], "http://frontendwebshop/index.html"
+  end
+
+  match "/*_", %{ layer: :not_found } do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex." )
   end
 
