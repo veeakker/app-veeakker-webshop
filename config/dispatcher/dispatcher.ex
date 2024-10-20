@@ -87,6 +87,11 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/delivery-places/"
   end
 
+  match "/delivery-routes/*path", @json_api do
+    IO.puts "Yay delivery routes"
+    Proxy.forward conn, path, "http://cache/delivery-routes/"
+  end
+
   match "/delivery-kinds/*path", @json_api do
     Proxy.forward conn, path, "http://cache/delivery-kinds/"
   end
@@ -157,6 +162,14 @@ defmodule Dispatcher do
 
   match "/full-addresses/*path", @json_api do
     Proxy.forward conn, path, "http://cache/full-addresses/"
+  end
+
+  match "/export/changed/*path", @json_api do
+    Proxy.forward conn, path, "http://export-orders/changed/"
+  end
+
+  match "/export/baskets/*path", @json_api do
+    Proxy.forward conn, path, "http://export-orders/baskets/"
   end
 
   match "/*_", %{ accept: [:html], layer: :api, reverse_host: ["admin" | _rest ] } do

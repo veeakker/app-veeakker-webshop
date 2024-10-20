@@ -1,10 +1,10 @@
 services:
   frontendfreddie:
-    image: madnificent/frontend-administration:0.5.0
+    image: madnificent/frontend-administration:0.6.0
     links:
       - identifier:backend
   frontendwebshop:
-    image: madnificent/frontend-shop:0.12.0
+    image: madnificent/frontend-shop:0.13.0
     links:
       - identifier:backend
   identifier:
@@ -20,9 +20,10 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/sparql-parser:0.0.5
+    image: semtech/sparql-parser:0.0.10
     volumes:
       - ./config/cl-authorization:/config
+      - ./data/cl-authorization:/data
     labels:
       - "logging=true"
   triplestore:
@@ -35,7 +36,7 @@ services:
     labels:
       - "logging=true"
   resource:
-    image: semtech/mu-cl-resources:1.24.0
+    image: semtech/mu-cl-resources:feature-more-backtrace
     volumes:
       - ./config/resources:/config
     environment:
@@ -91,6 +92,12 @@ services:
       DEFAULT_MU_AUTH_SCOPE: "http://services.semantic.works/image-service"
     volumes:
       - ./data/files:/share
+    labels:
+      - "logging=true"
+  export-orders:
+    image: madnificent/export-orders
+    environment:
+      ALLOW_MU_AUTH_SUDO: "true"
     labels:
       - "logging=true"
   authentication:

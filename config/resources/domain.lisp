@@ -7,6 +7,7 @@
 (setf sparql:*experimental-no-application-graph-for-sudo-select-queries* t)
 (setf *cache-model-properties-p* t)
 (setf mu-support::*use-custom-boolean-type-p* nil)
+(setf *backtrace-on-call-error-types* (list 'error))
 
 (define-resource banner ()
   :class (s-prefix "ext:Banner")
@@ -33,9 +34,22 @@
              (geo-coordinate :via ,(s-prefix "schema:geo")
                              :as "geo-coordinate")
              (postal-address :via ,(s-prefix "schema:hasAddress")
-                             :as "postal-address"))
+                             :as "postal-address")
+             (delivery-route :via ,(s-prefix "veeakker:belongsToRoute")
+                             :as "delivery-route"))
   :resource-base (s-url "http://veeakker.be/delivery-places/")
   :on-path "delivery-places")
+
+(define-resource delivery-route ()
+  :class (s-prefix "veeakker:DeliveryRoute")
+  :properties `((:label :string ,(s-prefix "dct:title"))
+                (:next-delivery-date :date ,(s-prefix "veeakker:deliveryDate"))
+                (:lfw-link :url ,(s-prefix "ext:lfw-link")))
+  :has-many `((delivery-place :via ,(s-prefix "veeakker:belongsToRoute")
+                              :inverse t
+                              :as "delivery-places"))
+  :resource-base (s-url "http://veeakker.be/delivery-routes/")
+  :on-path "delivery-routes")
 
 (define-resource delivery-kind ()
   :class (s-prefix "veeakker:DeliveryKind")
@@ -307,3 +321,14 @@
 
 
 ;; frapo http://purl.org/cerif/frapo/
+
+(defcall :delete (base-path id)
+  (with-user-configurable-backtrace
+    (with-single-itemspec-classes-retry
+      (delete-call (find-resource-by-path base-path) id))))
+
+(defun maybe-print-backtrace-for-toplevel-error (e)
+  "Prints a stacktrace for error E if the user has requested the
+system to do so."
+  (when (some (lambda (type) (typep e type)) *backtrace-on-call-error-types*)
+    (trivial-backtrace:print-backtrace e)))

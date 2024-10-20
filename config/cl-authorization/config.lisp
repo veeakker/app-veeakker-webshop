@@ -33,6 +33,7 @@
   ("schema:Organization" -> _ <- _)
   ("veeakker:DeliveryPlace"  -> _ <- _)
   ("veeakker:DeliveryKind" -> _ <- _)
+  ("veeakker:DeliveryRoute" -> _)
   ("schema:GeoCoordinate" -> _ <- _)
   ("schema:PostalAddress" -> _ <- _)
   ("veeakker:ProductGroup" -> _ <- _)
