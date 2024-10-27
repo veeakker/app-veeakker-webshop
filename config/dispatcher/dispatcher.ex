@@ -8,7 +8,7 @@ defmodule Dispatcher do
     any: [ "*/*" ]
   ]
 
-  define_layers [ :static, :api, :frontend_fallback, :not_found ]
+  define_layers [ :static, :frontend_html, :api, :frontend_fallback, :not_found ]
 
   @json_api %{ accept: [:json], layer: :api  }
   @image %{ accept: [:image] }
@@ -51,23 +51,23 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/postal-addresses/"
   end
 
-  patch "/accounts/*path" do
+  patch "/accounts/*path", @json_api do
     Proxy.forward conn, path, "http://cache/accounts/"
   end
 
-  post "/accounts/*path" do
+  post "/accounts/*path", @json_api do
     Proxy.forward conn, path, "http://authentication/accounts/"
   end
 
-  delete "/accounts/current/*path" do
+  delete "/accounts/current/*path", @json_api do
     Proxy.forward conn, path, "http://authentication/accounts/current/"
   end
 
-  patch "/accounts/current/changePassword/*path" do
+  patch "/accounts/current/changePassword/*path", @json_api do
     Proxy.forward conn, path, "http://authentication/accounts/current/changePassword/" 
   end
 
-  get "/accounts/*path" do
+  get "/accounts/*path", @json_api do
     Proxy.forward conn, path, "http://cache/accounts/"
   end
 
@@ -172,11 +172,11 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://export-orders/baskets/"
   end
 
-  match "/*_", %{ accept: [:html], layer: :api, reverse_host: ["admin" | _rest ] } do
+  match "/*_", %{ accept: [:html], layer: :frontend_html, reverse_host: ["admin" | _rest ] } do
     Proxy.forward conn, [], "http://frontendfreddie/index.html"
   end
 
-  match "/*_", %{ accept: [:html], layer: :api } do
+  match "/*_", %{ accept: [:html], layer: :frontend_html } do
     Proxy.forward conn, [], "http://frontendwebshop/index.html"
   end
 
