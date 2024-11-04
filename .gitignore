@@ -15,3 +15,4 @@ data/db/.dba_pwd_set
 data/db/virtuoso-temp 2.db
 
 .env
+/docker-compose.override.yml
