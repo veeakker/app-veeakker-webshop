@@ -124,5 +124,7 @@ services:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node
+      - cluster.max_shards_per_node=5000
+      - cluster.routing.allocation.total_shards_per_node=5000
     labels:
       - "logging=true"
