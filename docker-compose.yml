@@ -116,9 +116,13 @@ services:
     image: semtech/mu-search:feature-lazy-eager-indexes
     volumes:
       - ./config/search:/config
+    labels:
+      - "logging=true"
   elasticsearch:
     image: semtech/mu-search-elastic-backend:1.0.0
     volumes:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node
+    labels:
+      - "logging=true"
