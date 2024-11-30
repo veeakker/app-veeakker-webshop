@@ -8,6 +8,7 @@
 (setf *cache-model-properties-p* t)
 (setf mu-support::*use-custom-boolean-type-p* nil)
 (setf *backtrace-on-call-error-types* (list 'error))
+(setf sparql:*query-log-types* nil)  ;; '(:default :update-group :update :query :ask)
 
 (define-resource banner ()
   :class (s-prefix "ext:Banner")
