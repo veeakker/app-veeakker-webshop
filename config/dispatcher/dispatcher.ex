@@ -43,8 +43,12 @@ defmodule Dispatcher do
     Proxy.forward conn, path, new_path
   end
 
-  match "/people/*path", @json_api do
+  patch "/people/*path", @json_api do
     Proxy.forward conn, path, "http://authentication/people/"
+  end
+
+  get "/people/*path", @json_api do
+    Proxy.forward conn, path, "http://resource/people/"
   end
 
   match "/postal-addresses/*path", @json_api do
