@@ -113,7 +113,7 @@ services:
     labels:
       - "logging=true"
   search:
-    image: semtech/mu-search:feature-lazy-eager-indexes
+    image: semtech/mu-search:feature-lazy-and-ignored-allowed-groups
     volumes:
       - ./config/search:/config
     labels:

@@ -1,11 +1,13 @@
 {
   "persist_indexes": true,
   "automatic_index_updates": true,
+  "ignored_allowed_groups": [
+    { "name": "anonymous-session", "variables": ["*"] },
+    { "name": "logged-in", "variables": ["*"] },
+    { "name": "admin", "variables": [] }
+  ],
   "eager_indexing_groups": [
-    [ { "name": "public", "variables": [] } ],
-    [ { "name": "admin", "variables": [] } ],
-    [ { "name": "anonymous-session", "variables": ["*"] } ],
-    [ { "name": "logged-in", "variables": ["*"] } ]
+    [ { "name": "public", "variables": [] } ]
   ],
   "default_settings": {
     "analysis": {
