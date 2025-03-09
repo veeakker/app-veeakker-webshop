@@ -36,7 +36,7 @@ services:
     labels:
       - "logging=true"
   resource:
-    image: semtech/mu-cl-resources:feature-more-backtrace
+    image: semtech/mu-cl-resources:1.26.0
     volumes:
       - ./config/resources:/config
     environment:
