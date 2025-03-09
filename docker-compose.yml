@@ -1,6 +1,6 @@
 services:
   frontendfreddie:
-    image: madnificent/frontend-administration:0.7.1
+    image: madnificent/frontend-administration:0.7.2
     links:
       - identifier:backend
   frontendwebshop:
@@ -95,7 +95,7 @@ services:
     labels:
       - "logging=true"
   export-orders:
-    image: madnificent/export-orders:0.2.0
+    image: madnificent/export-orders:0.4.0
     environment:
       ALLOW_MU_AUTH_SUDO: "true"
     labels:
