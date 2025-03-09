@@ -205,7 +205,7 @@
                 (:delivery-type :url ,(s-prefix "veeakker:deliveryType")))
   :has-many `((order-line :via ,(s-prefix "veeakker:orderLine")
                           :as "order-lines"))
-  :has-one `((delivery-place :via ,(s-prefix "veeakker:deliveryAt")
+  :has-one `((delivery-place :via ,(s-prefix "veeakker:deliveryPlace")
                              :as "delivery-place")
              (full-address :via ,(s-prefix "veeakker:invoiceAddress")
                            :as "invoice-address")
