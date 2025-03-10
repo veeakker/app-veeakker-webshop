@@ -45,6 +45,22 @@
           "^http://veeakker.be/vocabularies/shop/hasProduct",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
+        "unit-price": {
+          "via": "http://veeakker.be/vocabularies/shop/singleUnitPrice",
+          "rdf_type": "http://purl.org/goodrelations/v1#UnitPriceSpecification",
+          "properties": {
+            "unit": "http://purl.org/goodrelations/v1#hasUnitOfMeasurement",
+            "value": "http://purl.org/goodrelations/v1#hasCurrencyValue"
+          }
+        },
+        "target-unit": {
+          "via": "http://veeakker.be/vocabularies/shop/targetUnit",
+          "rdf_type": "http://purl.org/goodrelations/v1#QuantitativeValue",
+          "properties": {
+            "value": "http://purl.org/goodrelations/v1#hasValue",
+            "unit": "http://purl.org/goodrelations/v1#hasUnitOfMeasurement"
+          }
+        },
         "offerings": {
           "via": "http://veeakker.be/vocabularies/shop/offerings",
           "rdf_type": "http://purl.org/goodrelations/v1#Offering",
@@ -59,7 +75,7 @@
             },
             "unit-price": {
               "via": "http://purl.org/goodrelations/v1#hasPriceSpecification",
-              "rdf_type": "http://purl.org/goodrelations/v1#",
+              "rdf_type": "http://purl.org/goodrelations/v1#UnitPriceSpecification",
               "properties": {
                 "unit": "http://purl.org/goodrelations/v1#hasUnitOfMeasurement",
                 "value": "http://purl.org/goodrelations/v1#hasCurrencyValue"
