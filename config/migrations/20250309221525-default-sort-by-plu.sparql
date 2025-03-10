@@ -1,0 +1,23 @@
+PREFIX schema: <http://schema.org/>
+PREFIX shop: <http://veeakker.be/vocabularies/shop/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s shop:sortIndex ?oldIndex.
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s shop:sortIndex ?newIndex.
+  }
+  GRAPH <http://mu.semte.ch/graphs/oldSortIndexes> {
+    ?s shop:oldSortIndex ?oldIndex.
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s a schema:Product;
+       adms:identifier ?plu.
+    OPTIONAL { ?s shop:sortIndex ?oldIndex. }
+    BIND ((100 * ?plu) AS ?newIndex)
+  }
+}
