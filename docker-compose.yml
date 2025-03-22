@@ -4,7 +4,7 @@ services:
     links:
       - identifier:backend
   frontendwebshop:
-    image: madnificent/frontend-shop:0.19.1
+    image: madnificent/frontend-shop:0.20.0
     links:
       - identifier:backend
   identifier:
@@ -83,7 +83,7 @@ services:
     labels:
       - "logging=true"
   basketservice:
-    image: madnificent/basket:0.8.0
+    image: madnificent/basket:0.8.1
     labels:
       - "logging=true"
   imageservice:
