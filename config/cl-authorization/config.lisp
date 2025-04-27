@@ -26,8 +26,12 @@
   :schema "http://schema.org/"
   :service "http://services.semantic.works/"
   :veeakker "http://veeakker.be/vocabularies/shop/"
+  :veeakkerservice "http://services.veeakker.be/"
   :skos "http://www.w3.org/2004/02/skos/core#"
-  :foaf "http://xmlns.com/foaf/0.1/")
+  :foaf "http://xmlns.com/foaf/0.1/"
+  :adms "http://www.w3.org/ns/adms#"
+  :dct "http://purl.org/dc/terms/"
+  :mu "http://mu.semte.ch/vocabularies/core/")
 
 (define-graph public ("http://mu.semte.ch/graphs/public")
   ("schema:Organization" -> _ <- _)
@@ -45,6 +49,16 @@
   ("veeakker:SpotlightProduct" -> _ <- _)
   ("nfo:FileDataObject" -> _ <- _)
   ("ext:Banner" -> _ <- _))
+
+(define-graph external-identifiers ("http://mu.semte.ch/graphs/external-identifiers")
+  ("adms:Identifier" -> _))
+
+(define-graph lfw-import-jobs ("http://mu.semte.ch/graphs/lfw-import-jobs")
+  ("veeakker:LfwFetchJob"
+   -> "rdf:type"
+   -> "mu:uuid"
+   -> "dct:created"
+   -> "adms:status"))
 
 (define-graph files ("http://mu.semte.ch/graphs/public")
   ("nfo:FileDataObject" -> _ <- _))
@@ -132,3 +146,8 @@
   (grant (read write)
          :to files
          :for "public"))
+
+(with-scope "veeakkerservice:lfw-import"
+  (grant (read write)
+         :to (public external-identifiers lfw-import-jobs files)
+         :for "admin"))

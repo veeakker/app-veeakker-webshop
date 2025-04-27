@@ -16,3 +16,4 @@ data/db/virtuoso-temp 2.db
 
 .env
 /docker-compose.override.yml
+/data/lfw-import

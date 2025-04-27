@@ -1,10 +1,10 @@
 services:
   frontendfreddie:
-    image: madnificent/frontend-administration:0.8.0
+    image: madnificent/frontend-administration:0.9.0
     links:
       - identifier:backend
   frontendwebshop:
-    image: madnificent/frontend-shop:0.21.0
+    image: madnificent/frontend-shop:0.22.0
     links:
       - identifier:backend
   identifier:
@@ -128,3 +128,13 @@ services:
       - cluster.routing.allocation.total_shards_per_node=5000
     labels:
       - "logging=true"
+  import-from-lfw-api:
+    image: madnificent/lfw-import
+    labels:
+      - logging=true
+    environment:
+      DEFAULT_MU_AUTH_SCOPE: "http://services.veeakker.be/lfw-import"
+      ALLOW_MU_AUTH_SUDO: "true"
+    volumes:
+      - "./data/files/:/share"
+      - "./data/lfw-import/page-cache/:/page-cache/"

@@ -164,6 +164,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://imageservice/image/"
   end
 
+  match "/files/*path", @image do
+    Proxy.forward conn, path, "http://file/files/"
+  end
+
   match "/full-addresses/*path", @json_api do
     Proxy.forward conn, path, "http://cache/full-addresses/"
   end
@@ -176,8 +180,17 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://export-orders/baskets/"
   end
 
+  match "/import/lfw/*path", @json_api do
+    IO.puts("importing from lfw")
+    Proxy.forward conn, path, "http://import-from-lfw-api/harvest/"
+  end
+
   match "/*_", %{ accept: [:html], layer: :frontend_html, reverse_host: ["admin" | _rest ] } do
     Proxy.forward conn, [], "http://frontendfreddie/index.html"
+  end
+
+  match "/*_", %{ accept: [:html], layer: :frontend_html, reverse_host: ["data" | _rest ] } do
+    Proxy.forward conn, [], "http://frontend-metis/index.html"
   end
 
   match "/*_", %{ accept: [:html], layer: :frontend_html } do
