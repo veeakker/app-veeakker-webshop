@@ -122,7 +122,7 @@
                 (:nutricion-data-text :string ,(s-prefix "veeakker:nutricionDataAsText")) ; should be served by nutricion data in the future
                 (:description :string ,(s-prefix "dct:description"))
                 (:ingredients-text :string ,(s-prefix "food:ingredientListAsText"))
-                (:plu :number ,(s-prefix "adms:identifier"))
+                (:plu :number ,(s-prefix "veeakker:plu"))
                 (:is-enabled :boolean ,(s-prefix "veeakker:isPublic")))
   :has-many `((product-group :via ,(s-prefix "veeakker:hasProduct")
                              :inverse t

@@ -39,7 +39,7 @@
         "nutricion-data-text": "http://veeakker.be/vocabularies/shop/nutricionDataAsText",
         "description": "http://purl.org/dc/terms/description",
         "ingredients-text": "http://data.lirmm.fr/ontologies/food#ingredientListAsText",
-        "plu": "http://www.w3.org/ns/adms#identifier",
+        "plu": "http://veeakker.be/vocabularies/shop/plu",
         "is-enabled": "http://veeakker.be/vocabularies/shop/isPublic",
         "product-group-ids": [
           "^http://veeakker.be/vocabularies/shop/hasProduct",

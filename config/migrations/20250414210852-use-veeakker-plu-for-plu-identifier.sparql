@@ -1,0 +1,21 @@
+PREFIX veeakker: <http://veeakker.be/vocabularies/shop/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX schema: <http://schema.org/>
+
+DELETE {
+  GRAPH ?g {
+    ?product adms:identifier ?plu.
+  }
+} INSERT {
+  GRAPH ?g {
+    ?product veeakker:plu ?plu.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?product a schema:Product;
+      adms:identifier ?plu.
+    FILTER NOT EXISTS {
+      ?product veeakker:plu ?somePlu
+    }
+  }
+}
