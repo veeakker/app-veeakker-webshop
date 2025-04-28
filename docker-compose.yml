@@ -41,6 +41,7 @@ services:
       - ./config/resources:/config
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
+      MU_DEFAULT_PAGE_SIZE: "50"
     labels:
       - "logging=true"
   cache:
