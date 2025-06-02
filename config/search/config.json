@@ -80,6 +80,14 @@
                 "unit": "http://purl.org/goodrelations/v1#hasUnitOfMeasurement",
                 "value": "http://purl.org/goodrelations/v1#hasCurrencyValue"
               }
+            },
+            "supplier": {
+              "via": "^http://purl.org/goodrelations/v1#offers",
+              "rdf_type": "http://purl.org/goodrelations/v1#BusinessEntity",
+              "properties": {
+                "name": "http://purl.org/goodrelations/v1#name",
+                "description": "http://purl.org/dc/terms/description"
+              }
             }
           }
         },

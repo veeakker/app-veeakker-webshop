@@ -42,7 +42,7 @@
   ("schema:PostalAddress" -> _ <- _)
   ("veeakker:ProductGroup" -> _ <- _)
   ("schema:Product" -> _ <- _)
-  ("gr:Offering" -> _ <- _)
+  ("gr:Offering" -> _ <- _) ;; includes <- gr:offers
   ("gr:UnitPriceSpecification" -> _ <- _)
   ("gr:QuantitativeValue" -> _ <- _)
   ("gr:TypeAndQuantityNode" -> _ <- _)
@@ -59,6 +59,15 @@
    -> "mu:uuid"
    -> "dct:created"
    -> "adms:status"))
+
+(define-graph lfw-extra-info ("http://mu.semte.ch/graphs/lfw-extra-info")
+  ("gr:BusinessEntity"
+   -> "rdf:type"
+   -> "mu:uuid"
+   -> "gr:name"
+   -> "adms:identifier"
+   -> "schema:email"
+   -> "dct:description"))
 
 (define-graph files ("http://mu.semte.ch/graphs/public")
   ("nfo:FileDataObject" -> _ <- _))
@@ -136,7 +145,7 @@
        :for "anonymous-session")
 
 (grant (read)
-       :to-graph public
+       :to-graph (public lfw-extra-info) ;; TODO: rename this graph if this is to persist
        :for-allowed-group "public")
 (grant (write)
        :to public
@@ -149,5 +158,5 @@
 
 (with-scope "veeakkerservice:lfw-import"
   (grant (read write)
-         :to (public external-identifiers lfw-import-jobs files)
+         :to (public external-identifiers lfw-import-jobs files lfw-extra-info)
          :for "admin"))

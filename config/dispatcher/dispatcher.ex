@@ -124,6 +124,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/offerings/"
   end
 
+  match "/business-entities/*path", @json_api do
+    Proxy.forward conn, path, "http://cache/business-entities/"
+  end
+
   match "/banners/*path", @json_api do
     Proxy.forward conn, path, "http://cache/banners/"
   end

@@ -143,9 +143,21 @@
   :has-one `((type-and-quantity :via ,(s-prefix "gr:includesObject")
                                 :as "type-and-quantity")
              (unit-price-specification :via ,(s-prefix "gr:hasPriceSpecification")
-                                       :as "unit-price"))
+                                       :as "unit-price")
+             (business-entity :via ,(s-prefix "gr:offers")
+                              :inverse t
+                              :as "supplier"))
   :resource-base (s-url "http://veeakker.be/offerings/")
   :on-path "offerings")
+
+(define-resource business-entity ()
+  :class (s-prefix "gr:BusinessEntity")
+  :properties `((:name :string ,(s-prefix "gr:name"))
+                (:email :string ,(s-prefix "schema:email"))
+                ;; description contains HTML
+                (:description :string ,(s-prefix "dct:description")))
+  :resource-base (s-url "http://veeakker.be/business-entities/")
+  :on-path "business-entities")
 
 (define-resource file ()
   :class (s-prefix "nfo:FileDataObject")

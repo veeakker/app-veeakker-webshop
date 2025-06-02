@@ -4,7 +4,7 @@ services:
     links:
       - identifier:backend
   frontendwebshop:
-    image: madnificent/frontend-shop:0.22.0
+    image: madnificent/frontend-shop:0.23.0
     links:
       - identifier:backend
   identifier:
@@ -20,7 +20,7 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/sparql-parser:0.0.14
+    image: semtech/sparql-parser:feature-ordered-data-modification-queries
     volumes:
       - ./config/cl-authorization:/config
       - ./data/cl-authorization:/data
@@ -96,7 +96,7 @@ services:
     labels:
       - "logging=true"
   export-orders:
-    image: madnificent/export-orders:0.5.0
+    image: madnificent/export-orders:0.5.1
     environment:
       ALLOW_MU_AUTH_SUDO: "true"
     labels:
@@ -130,7 +130,7 @@ services:
     labels:
       - "logging=true"
   import-from-lfw-api:
-    image: madnificent/lfw-import
+    image: madnificent/lfw-import:0.2.0
     labels:
       - logging=true
     environment:

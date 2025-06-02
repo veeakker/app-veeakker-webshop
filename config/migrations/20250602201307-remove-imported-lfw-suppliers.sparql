@@ -1,0 +1,11 @@
+DELETE WHERE {
+  GRAPH <http://mu.semte.ch/graphs/lfw-extra-info> {
+    ?s ?p ?o.
+  }
+};
+PREFIX gr: <http://purl.org/goodrelations/v1#>
+DELETE WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?ss gr:offers ?oo.
+  }
+}
