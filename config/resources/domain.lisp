@@ -140,6 +140,7 @@
 
 (define-resource offering ()
   :class (s-prefix "gr:Offering")
+  :properties `((:is-enabled :boolean ,(s-prefix "veeakker:isEnabled")))
   :has-one `((type-and-quantity :via ,(s-prefix "gr:includesObject")
                                 :as "type-and-quantity")
              (unit-price-specification :via ,(s-prefix "gr:hasPriceSpecification")
