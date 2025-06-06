@@ -1,14 +1,14 @@
 services:
   frontendfreddie:
-    image: madnificent/frontend-administration:0.10.0
+    image: madnificent/frontend-administration:0.11.0
     links:
       - identifier:backend
   frontendwebshop:
-    image: madnificent/frontend-shop:0.24.0
+    image: madnificent/frontend-shop:0.25.0
     links:
       - identifier:backend
   identifier:
-    image: semtech/mu-identifier:1.10.1
+    image: semtech/mu-identifier:1.11.0
     links:
       - dispatcher:dispatcher
     labels:

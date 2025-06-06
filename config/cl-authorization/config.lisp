@@ -148,7 +148,7 @@
        :to-graph (public lfw-extra-info) ;; TODO: rename this graph if this is to persist
        :for-allowed-group "public")
 (grant (write)
-       :to public
+       :to (public lfw-extra-info) ;; TODO: splitting this up into what is under admin and what is under LFW would clarify
        :for "admin")
 
 (with-scope "service:image-service"
