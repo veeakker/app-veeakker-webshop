@@ -1,6 +1,6 @@
 services:
   frontendfreddie:
-    image: madnificent/frontend-administration:0.11.0
+    image: madnificent/frontend-administration:0.12.0
     links:
       - identifier:backend
   frontendwebshop:
@@ -130,7 +130,7 @@ services:
     labels:
       - "logging=true"
   import-from-lfw-api:
-    image: madnificent/lfw-import:0.2.0
+    image: madnificent/lfw-import:0.2.1
     labels:
       - logging=true
     environment:
