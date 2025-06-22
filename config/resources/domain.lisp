@@ -30,6 +30,7 @@
   :class (s-prefix "veeakker:DeliveryPlace")
   :properties `((:is-enabled :boolean ,(s-prefix "veeakker:isEnabled"))
                 (:label  :string ,(s-prefix "dct:title"))
+                (:slug :string ,(s-prefix "ext:slug"))
                 (:lfw-link :url ,(s-prefix "ext:lfw-link")))
   :has-one `((delivery-kind :via ,(s-prefix "veeakker:hasDeliveryKind")
                             :as "delivery-kind")
