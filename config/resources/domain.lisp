@@ -279,7 +279,7 @@
 (define-resource person ()
   :class (s-prefix "foaf:Person")
   :properties `((:first-name :string ,(s-prefix "foaf:firstName"))
-                (:last-name :string ,(s-prefix "foaf:familyName"))
+                (:last-name :string ,(s-prefix "foaf:lastName"))
                 (:email :string ,(s-prefix "schema:email"))
                 (:phone :string ,(s-prefix "foaf:phone")))
   :has-one `((postal-address :via ,(s-prefix "schema:postalAddress")
