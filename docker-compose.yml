@@ -1,6 +1,6 @@
 services:
   frontendfreddie:
-    image: madnificent/frontend-administration:0.13.0
+    image: madnificent/frontend-administration:0.13.1
     links:
       - identifier:backend
   frontendwebshop:
