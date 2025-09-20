@@ -89,7 +89,7 @@
                 "description": "http://purl.org/dc/terms/description"
               }
             },
-            "fromBusinesses": {
+            "available-at-or-from": {
               "via": "http://purl.org/goodrelations/v1#availableAtOrFrom",
               "rdf_type": "http://purl.org/goodrelations/v1#BusinessEntity",
               "properties": {
