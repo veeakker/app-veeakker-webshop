@@ -88,6 +88,13 @@
                 "name": "http://purl.org/goodrelations/v1#name",
                 "description": "http://purl.org/dc/terms/description"
               }
+            },
+            "fromBusinesses": {
+              "via": "http://purl.org/goodrelations/v1#availableAtOrFrom",
+              "rdf_type": "http://purl.org/goodrelations/v1#BusinessEntity",
+              "properties": {
+                "name": "http://purl.org/goodrelations/v1#name"
+              }
             }
           }
         },
