@@ -45,6 +45,11 @@
           "^http://veeakker.be/vocabularies/shop/hasProduct",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
+        "available-at-or-from-ids": [
+          "http://veeakker.be/vocabularies/shop/offerings",
+          "http://purl.org/goodrelations/v1#availableAtOrFrom",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
         "unit-price": {
           "via": "http://veeakker.be/vocabularies/shop/singleUnitPrice",
           "rdf_type": "http://purl.org/goodrelations/v1#UnitPriceSpecification",
