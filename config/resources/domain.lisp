@@ -149,6 +149,8 @@
              (business-entity :via ,(s-prefix "gr:offers")
                               :inverse t
                               :as "supplier"))
+  :has-many `((business-entity :via ,(s-prefix "gr:availableAtOrFrom")
+                               :as "from-businesses"))
   :resource-base (s-url "http://veeakker.be/offerings/")
   :on-path "offerings")
 
