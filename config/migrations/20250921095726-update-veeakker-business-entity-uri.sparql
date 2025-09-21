@@ -1,0 +1,17 @@
+DELETE {
+  GRAPH ?g {
+    ?oldS ?p ?o
+  }
+} INSERT {
+  GRAPH ?g {
+    ?newS ?p ?o
+  }
+} WHERE {
+  VALUES (?oldS ?newS) {
+    ( <http://veeakker.be/suppliers/0da4ed78-c0cf-4e00-bc7a-84f7763cea7e> <http://veeakker.be/#me> )
+    ( <http://veeakker.be/> <http://veeakker.be/#me> )
+  }
+  GRAPH ?g {
+    ?oldS ?p ?o.
+  }
+}
