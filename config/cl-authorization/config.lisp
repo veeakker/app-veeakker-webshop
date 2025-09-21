@@ -8,11 +8,11 @@
 ;;;;;;;;;;;;;;;;;
 ;;; configuration
 (in-package :client)
-(setf *log-sparql-query-roundtrip* t)
+(setf *log-sparql-query-roundtrip* nil)
 (setf *backend* "http://triplestore:8890/sparql")
 
 (in-package :server)
-(setf *log-incoming-requests-p* t)
+(setf *log-incoming-requests-p* nil)
 
 
 ;;;;;;;;;;;;;;;;;
@@ -48,7 +48,8 @@
   ("gr:TypeAndQuantityNode" -> _ <- _)
   ("veeakker:SpotlightProduct" -> _ <- _)
   ("nfo:FileDataObject" -> _ <- _)
-  ("ext:Banner" -> _ <- _))
+  ("ext:Banner" -> _ <- _)
+  ("gr:BusinessEntity" -> "veeakker:hasDeliveryPlace"))
 
 (define-graph external-identifiers ("http://mu.semte.ch/graphs/external-identifiers")
   ("adms:Identifier" -> _))

@@ -39,7 +39,10 @@
              (postal-address :via ,(s-prefix "schema:hasAddress")
                              :as "postal-address")
              (delivery-route :via ,(s-prefix "veeakker:belongsToRoute")
-                             :as "delivery-route"))
+                             :as "delivery-route")
+             (business-entity :via ,(s-prefix "veeakker:hasDeliveryPlace")
+                              :inverse t
+                              :as "business-entity"))
   :resource-base (s-url "http://veeakker.be/delivery-places/")
   :on-path "delivery-places")
 
@@ -160,6 +163,8 @@
                 (:email :string ,(s-prefix "schema:email"))
                 ;; description contains HTML
                 (:description :string ,(s-prefix "dct:description")))
+  :has-many `((delivery-place :via ,(s-prefix "veeakker:hasDeliveryPlace")
+                              :as "delivery-places"))
   :resource-base (s-url "http://veeakker.be/business-entities/")
   :on-path "business-entities")
 
