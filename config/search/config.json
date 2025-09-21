@@ -116,6 +116,7 @@
           "label": { "type": "text" },
           "description": { "type": "text" },
           "product-group-ids": { "type": "keyword" },
+          "available-at-or-from-ids": { "type": "keyword" },
           "isEnabled": { "type": "boolean" }
         }
       }
