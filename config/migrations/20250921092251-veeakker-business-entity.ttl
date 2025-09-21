@@ -1,0 +1,12 @@
+@prefix gr: <http://purl.org/goodrelations/v1#>.
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
+@prefix schema: <http://schema.org/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+
+<http://veeakker.be/suppliers/0da4ed78-c0cf-4e00-bc7a-84f7763cea7e>
+  a gr:BusinessEntity;
+  mu:uuid "0da4ed78-c0cf-4e00-bc7a-84f7763cea7e";
+  schema:email "info@veeakker.be";
+  gr:name "Veeakker";
+  rdfs:description "This URI was created by a migration on 2025-09-21 Sun and was stored in the LFW import graph because that would make it the easiest to update through standard update mechanisms." .
