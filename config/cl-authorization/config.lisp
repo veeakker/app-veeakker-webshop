@@ -87,8 +87,43 @@
          }"
   :parameters ())
 
-(define-graph session-graph ("http://mu.semte.ch/sessions/")
-  (_ -> "veeakker:graphBelongsToSession"))
+(define-graph anonymous-session-graph ("http://mu.semte.ch/sessions/")
+  (_ -> "veeakker:graphBelongsToSession")
+  (_ -> "veeakker:hasBasket")
+  ("veeakker:Basket"
+   -> "rdf:type"
+   -> "mu:uuid"
+   -> "veeakker:orderedBy"
+   -> "veeakker:changedAt"
+   -> "veeakker:basketOrderStatus"
+   -> "veeakker:statusChangedAt"
+   -> "veeakker:deliveryAddress"
+   -> "veeakker:invoiceAddress"
+   -> "veeakker:deliveryType"
+   -> "veeakker:deliveryPlace"
+   -> "veeakker:orderLine"
+   -> "veeakker:hasCustomDeliveryPlace")
+  ("veeakker:OrderLine"
+   -> "rdf:type"
+   -> "mu:uuid"
+   -> "veeakker:amount"
+   -> "veeakker:customerComment"
+   -> "veeakker:hasOffering")
+  ("veeakker:Address"
+   -> "rdf:type"
+   -> "mu:uuid"
+   -> "schema:hasAddress"
+   -> "foaf:firstName"
+   -> "foaf:lastName"
+   -> "ext:companyInfo"
+   -> "foaf:phone"
+   -> "schema:email")
+  ("schema:PostalAddress."
+   -> "rdf:type"
+   -> "mu:uuid"
+   -> "schema:addressLocality"
+   -> "schema:postalCode"
+   -> "schema:streetAddress"))
 
 (supply-allowed-group "anonymous-session"
   :query "PREFIX session: <http://mu.semte.ch/vocabularies/session/>
@@ -108,7 +143,42 @@
    (_ -> "veeakker:graphBelongsToUser")
    ("foaf:OnlineAccount" -> _)
    ("foaf:Person" -> _)
-   ("schema:PostalAddress" -> _))
+   (_ -> "veeakker:graphBelongsToSession")
+   (_ -> "veeakker:hasBasket")
+   ("veeakker:Basket"
+    -> "rdf:type"
+    -> "mu:uuid"
+    -> "veeakker:orderedBy"
+    -> "veeakker:changedAt"
+    -> "veeakker:basketOrderStatus"
+    -> "veeakker:statusChangedAt"
+    -> "veeakker:deliveryAddress"
+    -> "veeakker:invoiceAddress"
+    -> "veeakker:deliveryType"
+    -> "veeakker:deliveryPlace"
+    -> "veeakker:orderLine"
+    -> "veeakker:hasCustomDeliveryPlace")
+   ("veeakker:OrderLine"
+    -> "rdf:type"
+    -> "mu:uuid"
+    -> "veeakker:amount"
+    -> "veeakker:customerComment"
+    -> "veeakker:hasOffering")
+   ("veeakker:Address"
+    -> "rdf:type"
+    -> "mu:uuid"
+    -> "schema:hasAddress"
+    -> "foaf:firstName"
+    -> "foaf:lastName"
+    -> "ext:companyInfo"
+    -> "foaf:phone"
+    -> "schema:email")
+   ("schema:PostalAddress."
+    -> "rdf:type"
+    -> "mu:uuid"
+    -> "schema:addressLocality"
+    -> "schema:postalCode"
+    -> "schema:streetAddress"))
 
 (supply-allowed-group "logged-in"
   :query "PREFIX session: <http://mu.semte.ch/vocabularies/session/>
@@ -142,7 +212,7 @@
        :for "logged-in")
 
 (grant (read write)
-       :to session-graph
+       :to anonymous-session-graph
        :for "anonymous-session")
 
 (grant (read)
