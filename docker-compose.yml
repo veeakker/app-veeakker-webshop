@@ -20,7 +20,7 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/sparql-parser:feature-ordered-data-modification-queries
+    image: semtech/sparql-parser:feature-improve-float-writing
     volumes:
       - ./config/cl-authorization:/config
       - ./data/cl-authorization:/data
@@ -95,6 +95,10 @@ services:
       - ./data/files:/share
     labels:
       - "logging=true"
+  product-availability-distribution:
+    image: madnificent/product-availability-distribution
+    environment:
+      DEFAULT_MU_AUTH_SCOPE: "http://services.semantic.works/product-availability-distribution"
   export-orders:
     image: madnificent/export-orders:0.5.1
     environment:

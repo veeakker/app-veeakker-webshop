@@ -164,7 +164,9 @@
                 ;; description contains HTML
                 (:description :string ,(s-prefix "dct:description")))
   :has-many `((delivery-place :via ,(s-prefix "veeakker:hasDeliveryPlace")
-                              :as "delivery-places"))
+                              :as "delivery-places")
+              (product-group :via ,(s-prefix "ext:disallowedProductGroup")
+                             :as "disallowed-product-groups"))
   :resource-base (s-url "http://veeakker.be/business-entities/")
   :on-path "business-entities")
 

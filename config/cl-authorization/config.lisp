@@ -31,7 +31,8 @@
   :foaf "http://xmlns.com/foaf/0.1/"
   :adms "http://www.w3.org/ns/adms#"
   :dct "http://purl.org/dc/terms/"
-  :mu "http://mu.semte.ch/vocabularies/core/")
+  :mu "http://mu.semte.ch/vocabularies/core/"
+  :food "http://data.lirmm.fr/ontologies/food#")
 
 (define-graph public ("http://mu.semte.ch/graphs/public")
   ("schema:Organization" -> _ <- _)
@@ -51,6 +52,76 @@
   ("ext:Banner" -> _ <- _)
   ("gr:BusinessEntity" -> "veeakker:hasDeliveryPlace"))
 
+
+;;; Product availability
+
+(define-graph product-group-distribution ("http://mu.semte.ch/graphs/public")
+  ;; The public graph is too broadly specified to split this off correctly but by introducing this separate graph the
+  ;; intent should be clear and we should be able to further split off access rights.
+  ("gr:BusinessEntity" -> "ext:disallowedProductGroup"))
+
+(define-graph product-location-availability ("http://mu.semte.ch/graphs/public")
+  ;; This infomation is in the public graph and needs to be broadly readable.  Splitting it off should allow us to later
+  ;; constrain access rights further.
+  ("gr:Offering" -> "gr:availableAtOrFrom"))
+
+(define-graph offerings ("http://mu.semte.ch/graphs/public")
+  ("schema:Product"
+   -> "rdf:type"
+   -> "mu:uuid"
+   -> "veeakker:offerings"
+   -> "veeakker:singleUnitPrice"
+   -> "veeakker:targetUnit")
+  ("gr:Offering"
+   -> "rdf:type"
+   -> "mu:uuid"
+   -> "gr:includesObject"
+   -> "gr:hasPriceSpecification"
+   <- "gr:offers")
+  ("gr:TypeAndQuantityNode"
+   -> "rdf:type"
+   -> "mu:uuid"
+   -> "gr:amountOfThisGood"
+   -> "gr:hasUnitOfMeasurement"
+   -> "gr:typeOfGood") ; product
+  ("gr:UnitPriceSpecification"
+   -> "rdf:type"
+   -> "mu:uuid"
+   -> "gr:hasUnitOfMeasurement"
+   -> "gr:hasValue")
+  ("gr:QuantitativeValue"
+   -> "rdf:type"
+   -> "mu:uuid"
+   -> "gr:hasUnitOfMeasurement"
+   -> "gr:hasValue"))
+
+(define-graph products ("http://mu.semte.ch/graphs/public")
+  ("schema:Product"
+   -> "rdf:type"
+   -> "mu:uuid"
+   -> "dct:title"
+   -> "skos:altLabel"
+   -> "veeakker:sortIndex"
+   -> "veeakker:hasLabel"
+   -> "veeakker:allergensAsText"
+   -> "veeakker:nutricionDataAsText"
+   -> "dct:description"
+   -> "food:ingredientsListAsText"
+   -> "veeakker:plu"
+   -> "veeakker:thumbnail"))
+
+(define-graph product-groups ("http://mu.semte.ch/graphs/public")
+  ("veeakker:ProductGroup"
+   -> "rdf:type"
+   -> "mu:uuid"
+   -> "skos:prefLabel"
+   -> "veeakker:sortIndex"
+   -> "skos:broader"
+   -> "veeakker:hasProduct"
+   -> "veeakker:hasSpotlight"))
+
+;;; LFW import
+
 (define-graph external-identifiers ("http://mu.semte.ch/graphs/external-identifiers")
   ("adms:Identifier" -> _))
 
@@ -69,6 +140,8 @@
    -> "adms:identifier"
    -> "schema:email"
    -> "dct:description"))
+
+;; Files
 
 (define-graph files ("http://mu.semte.ch/graphs/public")
   ("nfo:FileDataObject" -> _ <- _))
@@ -219,7 +292,11 @@
        :to-graph (public lfw-extra-info) ;; TODO: rename this graph if this is to persist
        :for-allowed-group "public")
 (grant (write)
-       :to (public lfw-extra-info) ;; TODO: splitting this up into what is under admin and what is under LFW would clarify
+       :to ( ;; TODO: splitting this up into what is under admin and what is under LFW would clarify
+            public lfw-extra-info
+            ;; the following two are not relevant today because they now just constrain the public graph
+            product-location-availability
+            product-group-distribution)
        :for "admin")
 
 (with-scope "service:image-service"
@@ -231,3 +308,11 @@
   (grant (read write)
          :to (public external-identifiers lfw-import-jobs files lfw-extra-info)
          :for "admin"))
+
+(with-scope "service:product-availability-distribution"
+  (grant (read write)
+         :to (product-location-availability product-group-distribution)
+         :for "public")
+  (grant (read)
+         :to (offerings product-groups lfw-extra-info)
+         :for "public"))
