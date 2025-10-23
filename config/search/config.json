@@ -1,6 +1,7 @@
 {
   "persist_indexes": true,
   "automatic_index_updates": true,
+  "update_wait_interval_minutes": 0,
   "ignored_allowed_groups": [
     { "name": "anonymous-session", "variables": ["*"] },
     { "name": "logged-in", "variables": ["*"] },
