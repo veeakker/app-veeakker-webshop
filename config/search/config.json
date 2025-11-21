@@ -71,6 +71,7 @@
           "via": "http://veeakker.be/vocabularies/shop/offerings",
           "rdf_type": "http://purl.org/goodrelations/v1#Offering",
           "properties": {
+            "is-enabled": "http://veeakker.be/vocabularies/shop/isEnabled",
             "type-and-quantity": {
               "via": "http://purl.org/goodrelations/v1#includesObject",
               "rdf_type": "http://purl.org/goodrelations/v1#TypeAndQuantityNode",

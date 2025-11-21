@@ -20,7 +20,7 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/sparql-parser:feature-improve-float-writing
+    image: semtech/sparql-parser:feature-more-consistent-throughput
     volumes:
       - ./config/cl-authorization:/config
       - ./data/cl-authorization:/data
@@ -84,7 +84,7 @@ services:
     labels:
       - "logging=true"
   basketservice:
-    image: madnificent/basket:0.8.1
+    image: madnificent/basket:0.8.2
     labels:
       - "logging=true"
   imageservice:
