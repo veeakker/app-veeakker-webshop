@@ -96,7 +96,9 @@ services:
     labels:
       - "logging=true"
   product-availability-distribution:
-    image: madnificent/product-availability-distribution
+    image: madnificent/product-availability-distribution:0.1.1
+    labels:
+      - "logging=true"
     environment:
       DEFAULT_MU_AUTH_SCOPE: "http://services.semantic.works/product-availability-distribution"
   export-orders:
