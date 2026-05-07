@@ -51,6 +51,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/people/"
   end
 
+  patch "/postal-addresses/*path", @json_api do
+    Proxy.forward conn, path, "http://authentication/postal-addresses/"
+  end
+
   match "/postal-addresses/*path", @json_api do
     Proxy.forward conn, path, "http://cache/postal-addresses/"
   end
