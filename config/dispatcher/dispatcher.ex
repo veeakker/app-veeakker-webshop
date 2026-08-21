@@ -91,6 +91,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/organizations/"
   end
 
+  match "/shops/*path", @json_api do
+    Proxy.forward conn, path, "http://resource/shops/"
+  end
+
   match "/delivery-places/*path", @json_api do
     Proxy.forward conn, path, "http://cache/delivery-places/"
   end

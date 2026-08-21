@@ -1,0 +1,9 @@
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix veeakker: <http://veeakker.be/vocabularies/shop/>.
+
+<http://veeakker.be/shops/all>
+  a veeakker:Shop;
+  mu:uuid "1f2c7ee6-5131-4c2e-8f1d-4e0ee2c0a79a";
+  dct:title "Alles";
+  veeakker:slug "all".

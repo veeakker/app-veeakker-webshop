@@ -52,7 +52,8 @@
   ("veeakker:SpotlightProduct" -> _ <- _)
   ("nfo:FileDataObject" -> _ <- _)
   ("ext:Banner" -> _ <- _)
-  ("gr:BusinessEntity" -> "veeakker:hasDeliveryPlace"))
+  ("gr:BusinessEntity" -> "veeakker:hasDeliveryPlace")
+  ("veeakker:Shop" -> _))
 
 
 ;;; Product availability
@@ -65,7 +66,8 @@
 (define-graph product-location-availability ("http://mu.semte.ch/graphs/public")
   ;; This infomation is in the public graph and needs to be broadly readable.  Splitting it off should allow us to later
   ;; constrain access rights further.
-  ("gr:Offering" -> "gr:availableAtOrFrom"))
+  ("gr:Offering" -> "gr:availableAtOrFrom")
+  ("gr:Offering" -> "veeakker:offeredByShop"))
 
 (define-graph offerings ("http://mu.semte.ch/graphs/public")
   ("schema:Product"
@@ -183,7 +185,8 @@
    -> "mu:uuid"
    -> "veeakker:amount"
    -> "veeakker:customerComment"
-   -> "veeakker:hasOffering")
+   -> "veeakker:hasOffering"
+   -> "veeakker:orderedFromShop")
   ("veeakker:Address"
    -> "rdf:type"
    -> "mu:uuid"
@@ -238,7 +241,8 @@
     -> "mu:uuid"
     -> "veeakker:amount"
     -> "veeakker:customerComment"
-    -> "veeakker:hasOffering")
+    -> "veeakker:hasOffering"
+    -> "veeakker:orderedFromShop")
    ("veeakker:Address"
     -> "rdf:type"
     -> "mu:uuid"

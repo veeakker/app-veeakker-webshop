@@ -34,7 +34,19 @@ export default [
       object: { value: "http://purl.org/goodrelations/v1#Offering" }
     }, {
       predicate: { value: "http://mu.semte.ch/vocabularies/ext/disallowedProductGroup" }
-  }].map( (match) => ({
+    }, {
+      predicate: { value: "http://purl.org/goodrelations/v1#availableAtOrFrom" }
+    }, {
+      predicate: { value: "http://purl.org/goodrelations/v1#offers" }
+    }, {
+      predicate: { value: "http://veeakker.be/vocabularies/shop/disallowedProductGroup" }
+    }, {
+      predicate: { value: "http://veeakker.be/vocabularies/shop/hasSupplier" }
+    }, {
+      predicate: { value: "http://veeakker.be/vocabularies/shop/hasDeliveryPlace" }
+    }, {
+      predicate: { value: "http://veeakker.be/vocabularies/shop/offerings" }
+    }].map( (match) => ({
     match,
     callback: {
       // the service could become smarter and base itself on actual delta messages
@@ -44,7 +56,7 @@ export default [
     options: {
       resoureFormat: "v0.0.1", // not used
       gracePeriod: 1000,
-      // ignoreFromSelf: true, // does not trigger itself
+      ignoreFromSelf: true, // the service writes gr:availableAtOrFrom itself, which would re-trigger /distribute
       foldEffectiveChanges: true
     }
   }))

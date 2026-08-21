@@ -1,0 +1,14 @@
+DELETE {
+  GRAPH ?g {
+    ?shop <http://veeakker.be/vocabularies/shop/banner> ?file.
+  }
+} INSERT {
+  GRAPH ?g {
+    ?shop <http://veeakker.be/vocabularies/shop/topImage> ?file.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?shop a <http://veeakker.be/vocabularies/shop/Shop>;
+          <http://veeakker.be/vocabularies/shop/banner> ?file.
+  }
+}
