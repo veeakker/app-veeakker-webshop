@@ -1,10 +1,10 @@
 services:
   frontendfreddie:
-    image: madnificent/frontend-administration:0.14.0
+    image: madnificent/frontend-administration:feature-multitenant
     links:
       - identifier:backend
   frontendwebshop:
-    image: madnificent/frontend-shop:0.27.1
+    image: madnificent/frontend-shop:feature-multitenant
     links:
       - identifier:backend
   identifier:
@@ -20,7 +20,7 @@ services:
     labels:
       - "logging=true"
   database:
-    image: semtech/sparql-parser:feature-more-consistent-throughput
+    image: semtech/sparql-parser:feature-improved-type-comparison
     volumes:
       - ./config/cl-authorization:/config
       - ./data/cl-authorization:/data
@@ -84,7 +84,7 @@ services:
     labels:
       - "logging=true"
   basketservice:
-    image: madnificent/basket:0.8.2
+    image: madnificent/basket:feature-multitenant
     labels:
       - "logging=true"
   imageservice:
@@ -96,7 +96,7 @@ services:
     labels:
       - "logging=true"
   product-availability-distribution:
-    image: madnificent/product-availability-distribution:0.1.1
+    image: madnificent/product-availability-distribution:feature-multitenant
     labels:
       - "logging=true"
     environment:
@@ -108,7 +108,7 @@ services:
     labels:
       - "logging=true"
   authentication:
-    image: madnificent/mu-node-authentication:0.2.0
+    image: madnificent/mu-node-authentication:latest
     labels:
       - "logging=true"
     restart: always
@@ -120,13 +120,14 @@ services:
     labels:
       - "logging=true"
   search:
-    image: semtech/mu-search:feature-lazy-and-ignored-allowed-groups
+    image: semtech/mu-search:latest
     volumes:
       - ./config/search:/config
+      - ./data/search:/data
     labels:
       - "logging=true"
   elasticsearch:
-    image: semtech/mu-search-elastic-backend:1.0.0
+    image: semtech/mu-search-elastic-backend:feature-easy-accessible-data
     volumes:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data
     environment:
