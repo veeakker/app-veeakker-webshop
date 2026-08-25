@@ -56,6 +56,11 @@
           "http://veeakker.be/vocabularies/shop/offeredByShop",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
+        "supplier-ids": [
+          "http://veeakker.be/vocabularies/shop/offerings",
+          "^http://purl.org/goodrelations/v1#offers",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
         "unit-price": {
           "via": "http://veeakker.be/vocabularies/shop/singleUnitPrice",
           "rdf_type": "http://purl.org/goodrelations/v1#UnitPriceSpecification",
@@ -125,6 +130,7 @@
           "product-group-ids": { "type": "keyword" },
           "available-at-or-from-ids": { "type": "keyword" },
           "shop-ids": { "type": "keyword" },
+          "supplier-ids": { "type": "keyword" },
           "isEnabled": { "type": "boolean" }
         }
       }
